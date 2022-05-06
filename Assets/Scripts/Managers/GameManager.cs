@@ -34,6 +34,7 @@ public class GameManager : Singleton<GameManager>
         PrefabManager.Instance.Init();
         AudioManager.Instance.Init();
         UIManager.Instance.Init();
+        InputManager.Instance.Init();
     }
 
     // Starts the game

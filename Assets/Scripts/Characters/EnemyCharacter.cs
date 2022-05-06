@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCharacter : MonoBehaviour
+public class EnemyCharacter : Character
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void HandleDeath()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.HandleDeath();
+        Destroy(this.gameObject);
     }
 }
