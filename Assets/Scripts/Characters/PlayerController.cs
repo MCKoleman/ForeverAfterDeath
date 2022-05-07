@@ -16,7 +16,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject playerBullet;
     [SerializeField] private Transform shootPoint;
     [SerializeField] private ParticleSystem shootEffect;
-    
+    [Range(0f, 100f), SerializeField] private float rotateSpeed = 25.0f;
+    private Vector3 targetRotation;
+
 
     private void Start()
     {
@@ -26,23 +28,34 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (canMove)
+        if (canMove && GameManager.Instance.IsGameActive)
         {
             rb.MovePosition(rb.position + movePos * moveSpeed * Time.fixedDeltaTime);
+        }
+
+        // Rotate player to face target
+        if(this.transform.up != targetRotation)
+        {
+            this.transform.up = Vector3.Lerp(transform.up, targetRotation, Time.deltaTime * rotateSpeed);
         }
     }
 
     public void HandleMove(Vector2 newPos)
     {
         movePos = newPos;
-        //movePos = context.ReadValue<Vector2>();
     }
 
-
-
-    public void HandleLook(Vector2 delta)
+    public void HandleLook(Vector2 pos)
     {
         // Handle looking
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(pos);
+        targetRotation = new Vector3(mousePos.x - this.transform.position.x, mousePos.y - this.transform.position.y, 0.0f).normalized;
+    }
+
+    public void HandleLookDelta(Vector2 delta)
+    {
+        // Handle looking
+        targetRotation = new Vector3(delta.x, delta.y, 0.0f).normalized;
     }
 
     public void HandleBlock()
