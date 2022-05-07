@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     private bool canMove = true;
     private Rigidbody2D rb;
     private Vector2 movePos;
+
+    [SerializeField] private GameObject playerBullet;
+    [SerializeField] private Transform shootPoint;
     
 
     private void Start()
@@ -47,7 +50,7 @@ public class PlayerController : MonoBehaviour
     }
     public void HandleAttack()
     {
-        // Handle attacking
+        Instantiate(playerBullet, shootPoint.position, shootPoint.rotation);
     }
 
     public void HandleDash()
