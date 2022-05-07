@@ -13,6 +13,15 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movePos;
 
+    [SerializeField]
+    private float dashSpeed;
+    private float dashLength = 0.5f;
+    private float dashCooldown = 2f;
+    private float dashDuration;
+    private float activeMoveSpeed;
+
+    
+
     [SerializeField] private GameObject playerBullet;
     [SerializeField] private Transform shootPoint;
     [SerializeField] private ParticleSystem shootEffect;
@@ -24,14 +33,29 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         GetChar();
+        activeMoveSpeed = moveSpeed;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (canMove && GameManager.Instance.IsGameActive)
         {
-            rb.MovePosition(rb.position + movePos * moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + movePos * activeMoveSpeed * Time.fixedDeltaTime);
         }
+
+        if (dashDuration > 0)
+        {
+            dashDuration -= Time.fixedDeltaTime;
+            if (dashDuration <= 0)
+            {
+                activeMoveSpeed = moveSpeed;
+                dashDuration = dashLength;
+            }
+        }
+        if (dashCooldown > 0)
+        {
+            dashCooldown -= Time.fixedDeltaTime;
+        }   
 
         // Rotate player to face target
         if(this.transform.up != targetRotation)
@@ -71,6 +95,15 @@ public class PlayerController : MonoBehaviour
     public void HandleDash()
     {
         // Handle dashing
+        if (dashDuration > 0)
+        {
+         if (dashCooldown <=0 && dashDuration <= 0)
+            {
+                activeMoveSpeed = dashSpeed;
+                dashDuration = dashLength;
+            }
+
+        }
     }
 
     public void HandleInteract()
