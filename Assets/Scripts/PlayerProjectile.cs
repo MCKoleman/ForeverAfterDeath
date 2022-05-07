@@ -7,6 +7,7 @@ public class PlayerProjectile : MonoBehaviour
     [Range(0, 100)]
     [SerializeField] private float projectileSpeed;
     [SerializeField] private int projectileDamage;
+    [SerializeField] private GameObject impactExplosion;
 
     private string enemyTag = "Enemy";
 
@@ -25,6 +26,7 @@ public class PlayerProjectile : MonoBehaviour
         if (collision.CompareTag(enemyTag))
         {
             collision.GetComponent<EnemyCharacter>().TakeDamage(projectileDamage);
+            Instantiate(impactExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

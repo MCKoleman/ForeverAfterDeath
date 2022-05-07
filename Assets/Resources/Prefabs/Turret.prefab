@@ -146,7 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curHealth: 50
-  maxHealth: 150
+  maxHealth: 100
+  enemyDeathParticle: {fileID: 3912539725883888746, guid: c62d2251378926d43af113c03db25949, type: 3}
 --- !u!61 &2828244936477695085
 BoxCollider2D:
   m_ObjectHideFlags: 0
