@@ -90,7 +90,7 @@ public class InputManager : Singleton<InputManager>
     }
 
     /* ============================================= Utility Functions ====================================== */
-    private PlayerController GetPlayer()
+    public PlayerController GetPlayer()
     {
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
