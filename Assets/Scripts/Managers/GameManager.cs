@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SceneLoader))]
 public class GameManager : Singleton<GameManager>
 {
-    public enum GameState { INVALID = 0, MENU = 1, PAUSED = 2, LOADING_LEVEL = 3, IN_GAME = 4 }
+    public enum GameState { INVALID = 0, MENU = 1, PAUSED = 2, LOADING_LEVEL = 3, GENERATING_LEVEL = 4, IN_GAME = 5 }
 
     [SerializeField]
     private GameState gameState;
@@ -33,6 +33,7 @@ public class GameManager : Singleton<GameManager>
     {
         PrefabManager.Instance.Init();
         AudioManager.Instance.Init();
+        GenManager.Instance.Init();
         UIManager.Instance.Init();
         InputManager.Instance.Init();
         StartGame();
