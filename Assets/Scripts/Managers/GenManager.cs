@@ -26,7 +26,7 @@ public class GenManager : Singleton<GenManager>
     private Vector2Int trCoord = new Vector2Int(int.MinValue, int.MinValue);
     private CameraController cameraController;
 
-    private Dictionary<Vector2Int, ContentNode> contentNodes = new Dictionary<Vector2Int, ContentNode>();
+    private Dictionary<Vector2Int, RoomContentNodes> contentNodes = new Dictionary<Vector2Int, RoomContentNodes>();
     private Dictionary<string, RoomNode> roomNodes = new Dictionary<string, RoomNode>();
     private List<RoomNode> spawnNodes = new List<RoomNode>();
 
@@ -241,6 +241,11 @@ public class GenManager : Singleton<GenManager>
 
     public void AddContentNode(ContentNode newNode)
     {
-        contentNodes.Add(newNode.pos, newNode);
+        // If adding content for a new room, create a new room to store the info
+        Vector2Int key = newNode.GetRoomPos();
+        if (!contentNodes.ContainsKey(key))
+            contentNodes.Add(key, new RoomContentNodes(newNode));
+        else
+            contentNodes[key].AddContentNode(newNode);
     }
 }
