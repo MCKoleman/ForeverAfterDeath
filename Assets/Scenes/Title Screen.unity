@@ -607,6 +607,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 243711688}
     - target: {fileID: 8636705845424148338, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
+      propertyPath: m_text
+      value: 'Forever After Death
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636705845424148338, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 37568dd57e5212043a06952b00b9132e, type: 2}
@@ -616,12 +622,26 @@ PrefabInstance:
       objectReference: {fileID: 5011033587771073977, guid: 37568dd57e5212043a06952b00b9132e, type: 2}
     - target: {fileID: 8636705845527092346, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1200
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636705845527092347, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
+      propertyPath: m_text
+      value: 'Forever After Death
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636705845527092347, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
+      propertyPath: m_fontSize
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8636705845527092347, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 37568dd57e5212043a06952b00b9132e, type: 2}
+    - target: {fileID: 8636705845527092347, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8636705845527092347, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
       propertyPath: m_sharedMaterial
       value: 
@@ -652,7 +672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8636705845653455483, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1300
+      value: 1400
       objectReference: {fileID: 0}
     - target: {fileID: 8636705845734727057, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
       propertyPath: m_Pivot.x
@@ -744,23 +764,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8636705846198756728, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1200
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636705846198756729, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
+      propertyPath: m_text
+      value: 'Forever After Death
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636705846198756729, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
+      propertyPath: m_fontSize
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8636705846198756729, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 37568dd57e5212043a06952b00b9132e, type: 2}
     - target: {fileID: 8636705846198756729, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636705846198756729, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 5011033587771073977, guid: 37568dd57e5212043a06952b00b9132e, type: 2}
     - target: {fileID: 8636705846385715356, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1200
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 8636705846506083459, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1300
+      value: 1400
       objectReference: {fileID: 0}
     - target: {fileID: 8636705846524251754, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -812,7 +846,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8636705847293010078, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1200
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 8636705847330422171, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
       propertyPath: m_AnchorMax.x
