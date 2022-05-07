@@ -83,7 +83,8 @@ public class UIManager : Singleton<UIManager>
     public void RefreshHUD() { hud.RefreshHUD(); }
 
     /* ============================================================ Child component function wrappers ==================================== */
-    public void UpdateHealth(float percent) { hud.UpdateHealth(percent); }
+    public void UpdateHealth(float newValue) { hud.UpdateHealth(newValue); }
+    public void SetMaxHealth(float newValue) { hud.SetMaxHealth(newValue); }
     public void SetLevelNum(int num) { hud.SetLevelNum(num); }
     public void UpdateXpDisplay(float percent) { hud.UpdateXpDisplay(percent); }
     public void UpdateLifeDisplay(int lives) { hud.UpdateLifeDisplay(lives); }

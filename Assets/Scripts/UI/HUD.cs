@@ -9,7 +9,7 @@ public class HUD : MonoBehaviour
     [SerializeField]
     private GameObject hudObj;
     [SerializeField]
-    private UISliderBar healthBar;
+    private Slider healthBar;
     [SerializeField]
     private UISliderBar xpBar;
     [SerializeField]
@@ -41,7 +41,8 @@ public class HUD : MonoBehaviour
     }
 
     /* ============================================================ Child component function wrappers ==================================== */
-    public void UpdateHealth(float percent) { healthBar.UpdateValue(percent); }
+    public void UpdateHealth(float newValue) { healthBar.value = newValue; }
+    public void SetMaxHealth(float newValue) { healthBar.maxValue = newValue; }
     public void UpdateXpDisplay(float percent) { xpBar.UpdateValue(percent); }
     public void UpdateLifeDisplay(int lives) { livesNum.text = GameManager.Instance.GetIsEasyMode() ? '\u221E'.ToString() : lives.ToString(); }
 }
