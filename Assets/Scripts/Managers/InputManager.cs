@@ -20,37 +20,37 @@ public class InputManager : Singleton<InputManager>
     private void HandleMove(Vector2 delta)
     {
         // Handle moving
-        GetPlayer().HandleMove(delta);
+        GetPlayer()?.HandleMove(delta);
     }
 
     private void HandleLook(Vector2 delta)
     {
         // Handle looking
-        GetPlayer().HandleLook(delta);
+        GetPlayer()?.HandleLook(delta);
     }
 
     private void HandleAttack()
     {
         // Handle attacking
-        GetPlayer().HandleAttack();
+        GetPlayer()?.HandleAttack();
     }
 
     private void HandleBlock()
     {
         // Handle blocking
-        GetPlayer().HandleBlock();
+        GetPlayer()?.HandleBlock();
     }
 
     private void HandleDash()
     {
         // Handle dashing
-        GetPlayer().HandleDash();
+        GetPlayer()?.HandleDash();
     }
 
     private void HandleInteract()
     {
         // Handle interaction
-        GetPlayer().HandleInteract();
+        GetPlayer()?.HandleInteract();
     }
 
     private void HandleMenu()
@@ -86,14 +86,14 @@ public class InputManager : Singleton<InputManager>
     private void HandleAbilityChange()
     {
         // Update player on new ability selection
-        GetPlayer().HandleAbilityChange(curAbility);
+        GetPlayer()?.HandleAbilityChange(curAbility);
     }
 
     /* ============================================= Utility Functions ====================================== */
     public PlayerController GetPlayer()
     {
         if (player == null)
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            player = GameObject.FindGameObjectWithTag("Player")?.GetComponent<PlayerController>();
         return player;
     }
 

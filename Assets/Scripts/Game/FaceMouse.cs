@@ -13,7 +13,7 @@ public class FaceMouse : MonoBehaviour
 
     void Update()
     {
-        if (rotatingActive)
+        if (rotatingActive && GameManager.Instance.IsGameActive && !UIManager.Instance.IsPaused())
         {
             RotateToFaceMouse();
         }
