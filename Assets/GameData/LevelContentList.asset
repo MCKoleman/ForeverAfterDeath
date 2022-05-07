@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15666c3cf986eb94ba9b91817f614871, type: 3}
+  m_Name: LevelContentList
+  m_EditorClassIdentifier: 
+  enemyList:
+    list: []
+  treasureList:
+    list: []
+  hazardList:
+    list: []
+  wallObjList:
+    list: []
+  nothingWeight: 0
+  enemyWeight: 0
+  treasureWeight: 0
+  hazardWeight: 0
+  wallObjWeight: 0.3
+  baseNothingWeight: 1
+  baseEnemyWeight: 0.1
+  baseTreasureWeight: 0.1
+  baseHazardWeight: 0.1
+  baseWallObjWeight: 0.1
+  nothingMod: 0
+  enemyMod: 0
+  treasureMod: 0
+  hazardMod: 0
