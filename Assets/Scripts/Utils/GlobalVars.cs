@@ -36,6 +36,11 @@ public class GlobalVars : Singleton<GlobalVars>
     }
 
     [System.Serializable]
+    public enum ContentType { NOTHING, ENEMY, TREASURE, HAZARD, WALL };
+    [System.Serializable]
+    public enum NodePlace { NORMAL = 0, EDGE = 1, CORNER = 2, CENTER = 3, WALL = 4 }
+
+    [System.Serializable]
     public enum Direction { MIDDLE = 0, TOP = 1, BOTTOM = 2, RIGHT = 3, LEFT = 4 }
 
     // NONE = 0_0000_0001,

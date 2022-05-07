@@ -12,7 +12,6 @@ public class LevelRoom : MonoBehaviour
     [Header("Spawn info")]
     public uint reqFlag;
     public int roomNum = 0;
-    public bool isCombinedRoom = false;
 
     [Header("Size info")]
     public Vector2 trBound = Vector2.zero;

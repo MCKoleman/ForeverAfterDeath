@@ -553,6 +553,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
   enemyPrefabList: []
+  entrancePrefab: {fileID: 0}
+  exitPrefab: {fileID: 0}
   projectileHolder: {fileID: 1107301786298088592}
   enemyHolder: {fileID: 1107301787306563072}
   levelObjHolder: {fileID: 1107301787174414290}
@@ -1212,6 +1214,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
+  baseRoomPrefab: {fileID: 8321298089799877368, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
+  roomList: {fileID: 11400000, guid: f0426c18fdcfed34e988b276554d09a6, type: 2}
+  contentList: {fileID: 11400000, guid: 60bcf14bc3042464f8d7a62f237d6762, type: 2}
+  roomSize: {x: 0, y: 0}
+  blCoord: {x: 2147483647, y: 2147483647}
+  trCoord: {x: -2147483648, y: -2147483648}
 --- !u!1 &8622615641382779800
 GameObject:
   m_ObjectHideFlags: 0

@@ -44,6 +44,7 @@ public class GameManager : Singleton<GameManager>
     {
         SetIsGameActive(true);
         UIManager.Instance.InitHUD();
+        GenManager.Instance.StartLevel();
         SetTimeScale(1.0f);
         Print.Log("Started game");
     }
