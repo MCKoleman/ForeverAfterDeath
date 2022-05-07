@@ -5,19 +5,24 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private PlayerCharacter playerChar;
+    [SerializeField]
+    private PlayerCharacter playerChar;
     private GlobalVars.SelectedAbility curAbility;
 
-    [SerializeField] private float moveSpeed;
+    [SerializeField]
+    private float moveSpeed;
     private bool canMove = true;
     private Rigidbody2D rb;
     private Vector2 movePos;
 
     [SerializeField]
-    private float dashSpeed;
-    private float dashLength = 0.5f;
-    private float dashCooldown = 2f;
-    private float dashDuration;
+    private float dashSpeed = 20.0f;
+    [SerializeField]
+    private float maxDashCooldown = 2.0f;
+    [SerializeField]
+    private float maxDashDuration = 0.5f;
+    private float curDashCooldown;
+    private float curDashDuration;
     private float activeMoveSpeed;
 
     
@@ -38,23 +43,28 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (canMove && GameManager.Instance.IsGameActive)
+        if (!GameManager.Instance.IsGameActive)
+            return;
+
+        if (canMove)
         {
             rb.MovePosition(rb.position + movePos * activeMoveSpeed * Time.fixedDeltaTime);
         }
-
-        if (dashDuration > 0)
+        
+        // Handle dash unless it's over
+        if (curDashDuration > 0)
         {
-            dashDuration -= Time.fixedDeltaTime;
-            if (dashDuration <= 0)
+            curDashDuration -= Time.fixedDeltaTime;
+            if (curDashDuration <= 0)
             {
                 activeMoveSpeed = moveSpeed;
-                dashDuration = dashLength;
+                curDashCooldown = maxDashCooldown;
             }
         }
-        if (dashCooldown > 0)
+        // Handle dash cooldown
+        if (curDashCooldown > 0)
         {
-            dashCooldown -= Time.fixedDeltaTime;
+            curDashCooldown -= Time.fixedDeltaTime;
         }   
 
         // Rotate player to face target
@@ -95,14 +105,10 @@ public class PlayerController : MonoBehaviour
     public void HandleDash()
     {
         // Handle dashing
-        if (dashDuration > 0)
+        if (curDashCooldown <= 0 && curDashDuration <= 0)
         {
-         if (dashCooldown <=0 && dashDuration <= 0)
-            {
-                activeMoveSpeed = dashSpeed;
-                dashDuration = dashLength;
-            }
-
+            activeMoveSpeed = dashSpeed;
+            curDashDuration = maxDashDuration;
         }
     }
 
