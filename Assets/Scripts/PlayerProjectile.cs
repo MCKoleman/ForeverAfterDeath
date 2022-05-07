@@ -26,7 +26,7 @@ public class PlayerProjectile : MonoBehaviour
         if (collision.CompareTag(enemyTag))
         {
             collision.GetComponent<EnemyCharacter>().TakeDamage(projectileDamage);
-            Instantiate(impactExplosion, transform.position, Quaternion.identity);
+            Instantiate(impactExplosion, transform.position, Quaternion.identity, PrefabManager.Instance.projectileHolder);
             Destroy(gameObject);
         }
     }
