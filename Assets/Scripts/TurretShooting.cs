@@ -23,7 +23,7 @@ public class TurretShooting : MonoBehaviour
     IEnumerator Shoot()
     {
         yield return new WaitForSeconds(Random.Range(shootIntervalMin, shootIntervalMax));
-        Instantiate(bullet, shootPoint.position, shootPoint.rotation);
+        Instantiate(bullet, shootPoint.position, shootPoint.rotation, PrefabManager.Instance.projectileHolder);
         StartCoroutine(Shoot());
     }
 
