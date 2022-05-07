@@ -14,11 +14,12 @@ public class PlayerController : MonoBehaviour
     private Vector2 movePos;
 
     [SerializeField]
-    private float activeMoveSpeed;
     private float dashSpeed;
-    private float dashLength = 0.5f, dashCooldown = 1f;
-    private float dashCounter;
-    private float dashCoolCounter;
+    private float dashLength = 0.5f;
+    private float dashCooldown = 2f;
+    private float dashDuration;
+    private float activeMoveSpeed;
+
     
 
     [SerializeField] private GameObject playerBullet;
@@ -29,19 +30,29 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         GetChar();
+        activeMoveSpeed = moveSpeed;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (canMove)
         {
-            rb.MovePosition(rb.position + movePos * moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + movePos * activeMoveSpeed * Time.fixedDeltaTime);
         }
 
-        if (dashCounter > 0)
+        if (dashDuration > 0)
         {
-            dashCounter -= Time.deltaTime;
+            dashDuration -= Time.fixedDeltaTime;
+            if (dashDuration <= 0)
+            {
+                activeMoveSpeed = moveSpeed;
+                dashDuration = dashLength;
+            }
         }
+        if (dashCooldown > 0)
+        {
+            dashCooldown -= Time.fixedDeltaTime;
+        }    
     }
 
     public void HandleMove(Vector2 newPos)
@@ -69,12 +80,12 @@ public class PlayerController : MonoBehaviour
     public void HandleDash()
     {
         // Handle dashing
-        if (dashCounter > 0)
+        if (dashDuration > 0)
         {
-            if(dashCounter <= 0)
+         if (dashCooldown <=0 && dashDuration <= 0)
             {
                 activeMoveSpeed = dashSpeed;
-                dashCounter = dashLength;
+                dashDuration = dashLength;
             }
 
         }
