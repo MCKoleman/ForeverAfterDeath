@@ -14,8 +14,7 @@ public class FacePlayer : MonoBehaviour
 
     void Start()
     {
-        //replace
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = InputManager.Instance.GetPlayer().gameObject;
     }
 
     void Update()
