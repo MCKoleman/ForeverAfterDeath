@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     public void HandleAttack()
     {
         shootEffect.Play();
-        Instantiate(playerBullet, shootPoint.position, shootPoint.rotation);
+        Instantiate(playerBullet, shootPoint.position, shootPoint.rotation, PrefabManager.Instance.projectileHolder);
     }
 
     public void HandleDash()

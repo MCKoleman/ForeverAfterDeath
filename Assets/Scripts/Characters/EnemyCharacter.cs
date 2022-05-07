@@ -8,7 +8,7 @@ public class EnemyCharacter : Character
     protected override void HandleDeath()
     {
         base.HandleDeath();
-        Instantiate(enemyDeathParticle, transform.position, Quaternion.identity);
+        Instantiate(enemyDeathParticle, transform.position, Quaternion.identity, PrefabManager.Instance.projectileHolder);
         Destroy(this.gameObject);
     }
 }
