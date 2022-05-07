@@ -39,6 +39,6 @@ MonoBehaviour:
   specialRoomlist:
     list: []
   minRoomCount: 1
-  prefRoomCount: 5
-  maxRoomCount: 5
+  prefRoomCount: 9
+  maxRoomCount: 10
   specialRoomChance: 10
