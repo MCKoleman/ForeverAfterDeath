@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e8047ed7094894b96e9f560294cb1e, type: 3}
+  m_Name: LevelRoomList
+  m_EditorClassIdentifier: 
+  roomList:
+    list:
+    - weight: 10
+      prefab: {fileID: 7941499739300110857, guid: f929e15892f016f489e61020fd274ca9, type: 3}
+    - weight: 10
+      prefab: {fileID: 7941499739300110857, guid: 84d9695a3b0d6b44cb22869c820c98ed, type: 3}
+    - weight: 10
+      prefab: {fileID: 7941499739300110857, guid: 0a83d9e15e407a44ea0ec453ad21e855, type: 3}
+    - weight: 10
+      prefab: {fileID: 7941499739300110857, guid: 7c5c4820e64309d4dbf2e773040cbe73, type: 3}
+    - weight: 5
+      prefab: {fileID: 7941499739300110857, guid: 7519a067a655bb844b2a235253df1303, type: 3}
+    - weight: 5
+      prefab: {fileID: 7941499739300110857, guid: a8f333ebf21f5ac4aba6f7f39380b4bc, type: 3}
+    - weight: 5
+      prefab: {fileID: 7941499739300110857, guid: b7ff9a0399da94441be42b4cda1a26f5, type: 3}
+    - weight: 5
+      prefab: {fileID: 7941499739300110857, guid: edc201db48f8d424b9d106c19ba3e817, type: 3}
+    - weight: 5
+      prefab: {fileID: 7941499739300110857, guid: 26928b0c58b589640b6a522a47d899d4, type: 3}
+    - weight: 5
+      prefab: {fileID: 7941499739300110857, guid: bf20e272d0899254d8ffdd804fa3997e, type: 3}
+    - weight: 1
+      prefab: {fileID: 481059445569501312, guid: 41ce6d0a6e5cf8d4cba691897cbe2763, type: 3}
+  specialRoomlist:
+    list: []
+  minRoomCount: 1
+  prefRoomCount: 9
+  maxRoomCount: 10
+  specialRoomChance: 10

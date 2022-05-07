@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - GenNode
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -11,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - GenerationNode
   - 
   - 
   - 
@@ -40,4 +43,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 173929417
+    locked: 0
+  - name: Objects
+    uniqueID: 3507040469
+    locked: 0
+  - name: Characters
+    uniqueID: 4237438911
+    locked: 0
+  - name: VFX
+    uniqueID: 3440287041
     locked: 0
