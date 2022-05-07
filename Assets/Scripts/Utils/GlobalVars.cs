@@ -37,6 +37,9 @@ public class GlobalVars : Singleton<GlobalVars>
 
     [System.Serializable]
     public enum ContentType { NOTHING, ENEMY, TREASURE, HAZARD, WALL };
+
+    [System.Serializable]
+    public enum WallType { DEFAULT = 0, TOP = 1, SIDE = 2, TOP_DOOR = 3, SIDE_DOOR = 4, FLOOR = 5 }
     [System.Serializable]
     public enum NodePlace { NORMAL = 0, EDGE = 1, CORNER = 2, CENTER = 3, WALL = 4 }
 

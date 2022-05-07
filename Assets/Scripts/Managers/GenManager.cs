@@ -26,7 +26,6 @@ public class GenManager : Singleton<GenManager>
     private Vector2Int trCoord = new Vector2Int(int.MinValue, int.MinValue);
 
     private Dictionary<Vector2Int, ContentNode> contentNodes = new Dictionary<Vector2Int, ContentNode>();
-    private Dictionary<Vector2Int, WallNode> wallNodes = new Dictionary<Vector2Int, WallNode>();
     private Dictionary<string, RoomNode> roomNodes = new Dictionary<string, RoomNode>();
     private List<RoomNode> spawnNodes = new List<RoomNode>();
 
@@ -72,7 +71,6 @@ public class GenManager : Singleton<GenManager>
         // Clear previous dungeon
         roomNodes.Clear();
         contentNodes.Clear();
-        wallNodes.Clear();
         spawnNodes.Clear();
 
         while(spawnNodes.Count > 0)
@@ -218,10 +216,5 @@ public class GenManager : Singleton<GenManager>
     public void AddContentNode(ContentNode newNode)
     {
         contentNodes.Add(newNode.pos, newNode);
-    }
-
-    public void AddWallNode(WallNode newNode)
-    {
-        wallNodes.Add(newNode.pos, newNode);
     }
 }

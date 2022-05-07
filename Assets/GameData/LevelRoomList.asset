@@ -14,8 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomList:
     list:
-    - weight: 0
-      prefab: {fileID: 8321298089799877368, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
+    - weight: 10
+      prefab: {fileID: 7941499739300110857, guid: f929e15892f016f489e61020fd274ca9, type: 3}
+    - weight: 10
+      prefab: {fileID: 7941499739300110857, guid: 84d9695a3b0d6b44cb22869c820c98ed, type: 3}
+    - weight: 10
+      prefab: {fileID: 7941499739300110857, guid: 0a83d9e15e407a44ea0ec453ad21e855, type: 3}
+    - weight: 10
+      prefab: {fileID: 7941499739300110857, guid: 7c5c4820e64309d4dbf2e773040cbe73, type: 3}
+    - weight: 5
+      prefab: {fileID: 7941499739300110857, guid: 7519a067a655bb844b2a235253df1303, type: 3}
+    - weight: 5
+      prefab: {fileID: 7941499739300110857, guid: a8f333ebf21f5ac4aba6f7f39380b4bc, type: 3}
+    - weight: 5
+      prefab: {fileID: 7941499739300110857, guid: b7ff9a0399da94441be42b4cda1a26f5, type: 3}
+    - weight: 5
+      prefab: {fileID: 7941499739300110857, guid: edc201db48f8d424b9d106c19ba3e817, type: 3}
+    - weight: 5
+      prefab: {fileID: 7941499739300110857, guid: 26928b0c58b589640b6a522a47d899d4, type: 3}
+    - weight: 5
+      prefab: {fileID: 7941499739300110857, guid: bf20e272d0899254d8ffdd804fa3997e, type: 3}
+    - weight: 1
+      prefab: {fileID: 481059445569501312, guid: 41ce6d0a6e5cf8d4cba691897cbe2763, type: 3}
   specialRoomlist:
     list: []
   minRoomCount: 1

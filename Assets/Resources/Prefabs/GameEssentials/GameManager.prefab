@@ -552,9 +552,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
-  enemyPrefabList: []
-  entrancePrefab: {fileID: 0}
-  exitPrefab: {fileID: 0}
+  enemyPrefabList:
+  - {fileID: 3240178453244228939, guid: 76308a7525b21fe4291c470275bf4c59, type: 3}
+  wallPrefabList:
+  - {fileID: 6065744156703875997, guid: 93422a46002f8c643bf91bac2d03f505, type: 3}
+  - {fileID: 6856102860674274183, guid: 509d508c7b36b334f90cbbf19173454d, type: 3}
+  - {fileID: 104437556475801442, guid: a4602504c8c97b149a9a25e33867f56b, type: 3}
+  - {fileID: 1424608889883927487, guid: c2b765987f5520842a21c1063f1f76f1, type: 3}
+  entrancePrefab: {fileID: 3240178453244228939, guid: 76308a7525b21fe4291c470275bf4c59, type: 3}
+  exitPrefab: {fileID: 5052134788337557422, guid: 55a5521104005a046af2a5cbf4ce38e6, type: 3}
   projectileHolder: {fileID: 1107301786298088592}
   enemyHolder: {fileID: 1107301787306563072}
   levelObjHolder: {fileID: 1107301787174414290}

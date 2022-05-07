@@ -6,6 +6,8 @@ public class PrefabManager : Singleton<PrefabManager>
 {
     [Header("Prefabs")]
     public GameObject[] enemyPrefabList;
+    public GameObject[] wallPrefabList;
+    // WallType { DEFAULT = 0, TOP = 1, SIDE = 2, TOP_DOOR = 3, SIDE_DOOR = 4, FLOOR = 5 }
     public GameObject entrancePrefab;
     public GameObject exitPrefab;
 
@@ -40,6 +42,12 @@ public class PrefabManager : Singleton<PrefabManager>
 
         for (int i = bossHolder.childCount - 1; i >= 0; i--)
             Destroy(bossHolder.GetChild(i).gameObject);
+    }
+
+    // Returns the wall object of the given type
+    public GameObject GetWallObject(GlobalVars.WallType wallType)
+    {
+        return wallPrefabList[Mathf.Clamp((int)(wallType - 1), 0, wallPrefabList.Length)];
     }
 
     // Returns the number of enemies 
