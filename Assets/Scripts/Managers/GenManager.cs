@@ -24,6 +24,7 @@ public class GenManager : Singleton<GenManager>
     private Vector2Int blCoord = new Vector2Int(int.MaxValue, int.MaxValue);
     [SerializeField]
     private Vector2Int trCoord = new Vector2Int(int.MinValue, int.MinValue);
+    private CameraController cameraController;
 
     private Dictionary<Vector2Int, ContentNode> contentNodes = new Dictionary<Vector2Int, ContentNode>();
     private Dictionary<string, RoomNode> roomNodes = new Dictionary<string, RoomNode>();
@@ -40,6 +41,8 @@ public class GenManager : Singleton<GenManager>
 
     public void StartLevel()
     {
+        cameraController = Camera.main?.GetComponent<CameraController>();
+
         GameObject tempObj = Instantiate(baseRoomPrefab, Vector3.zero, Quaternion.identity, PrefabManager.Instance.levelGeoHolder);
         startRoom = tempObj.GetComponent<LevelRoom>();
         StartCoroutine(AsyncGeneration());
@@ -118,6 +121,17 @@ public class GenManager : Singleton<GenManager>
         }
         SpawnExit(latestRoom);
         isFullyGenerated = true;
+    }
+
+    // Sets the current room to the given room
+    public void SetCurrentRoom(LevelRoom newRoom)
+    {
+        currentRoom = newRoom;
+
+        // Set camera to follow new room
+        if (newRoom != null)
+            cameraController.SetRoom(newRoom);
+        
     }
 
     // Selects a room prefab to spawn that meets the current criteria

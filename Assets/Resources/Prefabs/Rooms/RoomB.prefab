@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: req
       value: 256
       objectReference: {fileID: 0}
+    - target: {fileID: 1859257648662024909, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
+      propertyPath: shouldSpawn
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6532251402546754470, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
       propertyPath: roomReqs.Array.data[0]
       value: 32
@@ -75,9 +79,17 @@ PrefabInstance:
       propertyPath: req
       value: 128
       objectReference: {fileID: 0}
+    - target: {fileID: 7308837563943212121, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
+      propertyPath: shouldSpawn
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7420572732440055425, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
       propertyPath: req
       value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 7420572732440055425, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
+      propertyPath: shouldSpawn
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7421072005793804927, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
       propertyPath: req
