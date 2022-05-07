@@ -14,7 +14,8 @@ public class FlyingEnemy : MonoBehaviour
 
     void Update()
     {
-        MoveForward();
+        if(GameManager.Instance.IsGameActive && !UIManager.Instance.IsPaused())
+            MoveForward();
     }
 
     private void MoveForward()
@@ -36,7 +37,5 @@ public class FlyingEnemy : MonoBehaviour
         pc.TakeDamage(damage);
         yield return new WaitForSeconds(damageCoolDown);
         canAttack = true;
-
-
     }
 }

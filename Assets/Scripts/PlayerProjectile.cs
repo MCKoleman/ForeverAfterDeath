@@ -9,8 +9,6 @@ public class PlayerProjectile : MonoBehaviour
     [SerializeField] private int projectileDamage;
     [SerializeField] private GameObject impactExplosion;
 
-    private string enemyTag = "Enemy";
-
     void Update()
     {
         MoveForward();
@@ -23,11 +21,33 @@ public class PlayerProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(enemyTag))
+        // Damage enemies
+        if (collision.CompareTag("Enemy"))
         {
             collision.GetComponent<EnemyCharacter>().TakeDamage(projectileDamage);
             Instantiate(impactExplosion, transform.position, Quaternion.identity, PrefabManager.Instance.projectileHolder);
-            Destroy(gameObject);
+            Destroy(this.gameObject);
+        }
+        // Destroy on wall collision
+        else if(collision.CompareTag("Wall"))
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Damage enemies
+        if (collision.collider.CompareTag("Enemy"))
+        {
+            collision.collider.GetComponent<EnemyCharacter>().TakeDamage(projectileDamage);
+            Instantiate(impactExplosion, transform.position, Quaternion.identity, PrefabManager.Instance.projectileHolder);
+            Destroy(this.gameObject);
+        }
+        // Destroy on wall collision
+        else if (collision.collider.CompareTag("Wall"))
+        {
+            Destroy(this.gameObject);
         }
     }
 }

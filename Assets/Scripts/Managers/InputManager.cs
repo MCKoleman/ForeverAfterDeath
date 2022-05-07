@@ -9,6 +9,10 @@ public class InputManager : Singleton<InputManager>
     private GlobalVars.SelectedAbility curAbility;
     [SerializeField]
     private PlayerController player;
+    [SerializeField]
+    private CurrentDevice curDevice;
+
+    private enum CurrentDevice { INVALID= 0, KEYBOARD_MOUSE = 1, GAMEPAD = 2 };
 
     // Handles initialization. Should only be called from the game manager
     public void Init()
@@ -17,16 +21,23 @@ public class InputManager : Singleton<InputManager>
     }
 
     /* ============================================= Input Functions ====================================== */
+    #region Input Functions
     private void HandleMove(Vector2 delta)
     {
         // Handle moving
         GetPlayer()?.HandleMove(delta);
     }
 
-    private void HandleLook(Vector2 delta)
+    private void HandleLook(Vector2 pos)
     {
         // Handle looking
-        GetPlayer()?.HandleLook(delta);
+        GetPlayer()?.HandleLook(pos);
+    }
+
+    private void HandleLookDelta(Vector2 delta)
+    {
+        // Handle looking
+        GetPlayer()?.HandleLookDelta(delta);
     }
 
     private void HandleAttack()
@@ -88,8 +99,10 @@ public class InputManager : Singleton<InputManager>
         // Update player on new ability selection
         GetPlayer()?.HandleAbilityChange(curAbility);
     }
+    #endregion
 
     /* ============================================= Utility Functions ====================================== */
+    #region Utility Functions
     public PlayerController GetPlayer()
     {
         if (player == null)
@@ -102,8 +115,10 @@ public class InputManager : Singleton<InputManager>
     {
         return GameManager.Instance.IsGameActive && !UIManager.Instance.IsPaused();
     }
+    #endregion
 
     /* ============================================= Input Handles ====================================== */
+    #region Input Handles
     public void HandleMoveContext(InputAction.CallbackContext context)
     {
         if (CanTakeInput())
@@ -112,8 +127,14 @@ public class InputManager : Singleton<InputManager>
 
     public void HandleLookContext(InputAction.CallbackContext context)
     {
-        if (CanTakeInput())
+        if (CanTakeInput() && curDevice == CurrentDevice.KEYBOARD_MOUSE)
             HandleLook(context.ReadValue<Vector2>());
+    }
+
+    public void HandleLookDeltaContext(InputAction.CallbackContext context)
+    {
+        if (CanTakeInput())
+            HandleLookDelta(context.ReadValue<Vector2>());
     }
 
     public void HandleAttackContext(InputAction.CallbackContext context)
@@ -168,4 +189,18 @@ public class InputManager : Singleton<InputManager>
         if (context.performed)
             HandleMenu();
     }
+
+    public void HandleInputSwap(PlayerInput input)
+    {
+        // Check if using gamepad
+        if (input.currentControlScheme == "Gamepad")
+            curDevice = CurrentDevice.GAMEPAD;
+        // Check if using keyboard and mouse
+        else if (input.currentControlScheme == "Keyboard&Mouse")
+            curDevice = CurrentDevice.KEYBOARD_MOUSE;
+        // Only support keyboard, mouse, and gamepad
+        else
+            curDevice = CurrentDevice.INVALID;
+    }
+    #endregion
 }
