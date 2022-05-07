@@ -8,8 +8,6 @@ public class BasicProjectile : MonoBehaviour
     [SerializeField] private float projectileSpeed;
     [SerializeField] private int projectileDamage;
 
-    private string playerTag = "Player";
-
     void Update()
     {
         MoveForward();
@@ -22,10 +20,27 @@ public class BasicProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(playerTag))
+        if (collision.CompareTag("Player"))
         {
             collision.GetComponent<PlayerCharacter>().TakeDamage(projectileDamage);
-            Destroy(gameObject);
+            Destroy(this.gameObject);
+        }
+        else if(collision.CompareTag("Wall"))
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            collision.collider.GetComponent<PlayerCharacter>().TakeDamage(projectileDamage);
+            Destroy(this.gameObject);
+        }
+        else if (collision.collider.CompareTag("Wall"))
+        {
+            Destroy(this.gameObject);
         }
     }
 }

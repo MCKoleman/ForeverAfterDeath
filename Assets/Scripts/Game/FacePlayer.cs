@@ -19,13 +19,13 @@ public class FacePlayer : MonoBehaviour
 
     void Update()
     {
-        if (canFacePlayer && player != null)
+        if (canFacePlayer && player != null && GameManager.Instance.IsGameActive && !UIManager.Instance.IsPaused())
         {
             DoFacePlayer();
         }
     }
 
-    void DoFacePlayer()
+    private void DoFacePlayer()
     {
         Vector2 direction;
         direction.x = player.transform.position.x - transform.position.x;

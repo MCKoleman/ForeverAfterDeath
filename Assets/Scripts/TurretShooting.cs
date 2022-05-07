@@ -8,24 +8,20 @@ public class TurretShooting : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private float shootIntervalMin;
     [SerializeField] private float shootIntervalMax;
+    public bool isShootingActive = true;
 
     void Start()
     {
         StartCoroutine(Shoot());        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    } 
 
     IEnumerator Shoot()
     {
-        yield return new WaitForSeconds(Random.Range(shootIntervalMin, shootIntervalMax));
-        Instantiate(bullet, shootPoint.position, shootPoint.rotation, PrefabManager.Instance.projectileHolder);
-        StartCoroutine(Shoot());
+        while(isShootingActive)
+        {
+            yield return new WaitUntil(() => (GameManager.Instance.IsGameActive && !UIManager.Instance.IsPaused()));
+            yield return new WaitForSeconds(Random.Range(shootIntervalMin, shootIntervalMax));
+            Instantiate(bullet, shootPoint.position, shootPoint.rotation, PrefabManager.Instance.projectileHolder);
+        }
     }
-
-
 }
