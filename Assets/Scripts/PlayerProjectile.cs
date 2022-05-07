@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicProjectile : MonoBehaviour
+public class PlayerProjectile : MonoBehaviour
 {
     [Range(0, 100)]
     [SerializeField] private float projectileSpeed;
     [SerializeField] private int projectileDamage;
+    [SerializeField] private GameObject impactExplosion;
 
-    private string playerTag = "Player";
+    private string enemyTag = "Enemy";
 
     void Update()
     {
@@ -22,9 +23,10 @@ public class BasicProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(playerTag))
+        if (collision.CompareTag(enemyTag))
         {
-            collision.GetComponent<PlayerCharacter>().TakeDamage(projectileDamage);
+            collision.GetComponent<EnemyCharacter>().TakeDamage(projectileDamage);
+            Instantiate(impactExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
