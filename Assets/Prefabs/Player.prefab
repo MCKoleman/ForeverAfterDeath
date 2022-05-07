@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curHealth: 0
-  maxHealth: 0
+  maxHealth: 1
 --- !u!50 &1833483167988383936
 Rigidbody2D:
   serializedVersion: 4
@@ -148,4 +148,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToRotate: {fileID: 1833483167988383941}
-  rotateSpeed: 0
+  rotateSpeed: 20
