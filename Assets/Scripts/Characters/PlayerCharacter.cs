@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class PlayerCharacter : Character
 {
+    private SpriteRenderer sprite;
+
     protected override void Start()
     {
         base.Start();
         curHealth = maxHealth;
+        sprite = this.gameObject.GetComponent<SpriteRenderer>();
+        sprite.enabled = true;
         UIManager.Instance.SetMaxHealth(maxHealth);
         UIManager.Instance.UpdateHealth(curHealth);
     }
@@ -15,7 +19,9 @@ public class PlayerCharacter : Character
     protected override void HandleDeath()
     {
         base.HandleDeath();
-        Destroy(this.gameObject);
+        sprite.enabled = false;
+        GameManager.Instance.EndGame();
+        //Destroy(this.gameObject);
     }
 
     protected override void HandleHealthChange()
