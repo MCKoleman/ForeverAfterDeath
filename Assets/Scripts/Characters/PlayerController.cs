@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject playerBullet;
     [SerializeField] private Transform shootPoint;
+    [SerializeField] private ParticleSystem shootEffect;
     
 
     private void Start()
@@ -74,7 +75,8 @@ public class PlayerController : MonoBehaviour
     }
     public void HandleAttack()
     {
-        Instantiate(playerBullet, shootPoint.position, shootPoint.rotation);
+        shootEffect.Play();
+        Instantiate(playerBullet, shootPoint.position, shootPoint.rotation, PrefabManager.Instance.projectileHolder);
     }
 
     public void HandleDash()

@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class EnemyCharacter : Character
 {
+    [SerializeField] GameObject enemyDeathParticle;
     protected override void HandleDeath()
     {
         base.HandleDeath();
+        Instantiate(enemyDeathParticle, transform.position, Quaternion.identity, PrefabManager.Instance.projectileHolder);
         Destroy(this.gameObject);
     }
 }
