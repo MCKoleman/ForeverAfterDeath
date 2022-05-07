@@ -16,6 +16,8 @@ public class GameManager : Singleton<GameManager>
 
     [SerializeField]
     private bool isEasyMode = false;
+    [SerializeField]
+    private bool DEBUG_DISABLE_LEVEL = false;
 
     private SceneLoader sceneLoader;
 
@@ -36,7 +38,10 @@ public class GameManager : Singleton<GameManager>
         GenManager.Instance.Init();
         UIManager.Instance.Init();
         InputManager.Instance.Init();
-        GenManager.Instance.StartLevel();
+#if UNITY_EDITOR
+        if(!DEBUG_DISABLE_LEVEL)
+#endif
+            GenManager.Instance.StartLevel();
     }
 
     // Starts the game

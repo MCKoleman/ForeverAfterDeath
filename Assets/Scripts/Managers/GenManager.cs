@@ -67,13 +67,18 @@ public class GenManager : Singleton<GenManager>
     {
         GameObject latestRoom = startRoom.gameObject;
         numRooms = 1;
+        blCoord = new Vector2Int(int.MaxValue, int.MaxValue);
+        trCoord = new Vector2Int(int.MinValue, int.MinValue);
+        roomSize = room.GetSize();
 
         // Clear previous dungeon
         roomNodes.Clear();
         contentNodes.Clear();
         spawnNodes.Clear();
 
-        while(spawnNodes.Count > 0)
+        AddNodesToDict(roomNodes, spawnNodes, room.roomNodes);
+
+        while (spawnNodes.Count > 0)
         {
             // Pop the first spawnNode
             RoomNode tempNode = spawnNodes[0];
@@ -111,6 +116,7 @@ public class GenManager : Singleton<GenManager>
             // Remove all nodes that have been exhausted
             TrimSpawnedNodes(spawnNodes);
         }
+        SpawnExit(latestRoom);
         isFullyGenerated = true;
     }
 
@@ -211,6 +217,12 @@ public class GenManager : Singleton<GenManager>
                     break;
             }
         }
+    }
+
+    // Spawns a way to exit the dungeon
+    private void SpawnExit(GameObject latestRoom)
+    {
+       Instantiate(PrefabManager.Instance.exitPrefab, latestRoom.transform.position, Quaternion.identity, PrefabManager.Instance.levelGeoHolder);
     }
 
     public void AddContentNode(ContentNode newNode)

@@ -83,13 +83,25 @@ PrefabInstance:
       propertyPath: req
       value: 32
       objectReference: {fileID: 0}
+    - target: {fileID: 7851738415894515898, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8321298089799877368, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
       propertyPath: m_Name
       value: RoomL
       objectReference: {fileID: 0}
+    - target: {fileID: 8378121109439317216, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8378121109444512835, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
       propertyPath: type
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8378121110328699518, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
+      propertyPath: type
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
