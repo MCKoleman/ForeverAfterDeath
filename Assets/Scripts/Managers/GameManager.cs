@@ -36,7 +36,7 @@ public class GameManager : Singleton<GameManager>
         GenManager.Instance.Init();
         UIManager.Instance.Init();
         InputManager.Instance.Init();
-        StartGame();
+        GenManager.Instance.StartLevel();
     }
 
     // Starts the game
@@ -44,7 +44,6 @@ public class GameManager : Singleton<GameManager>
     {
         SetIsGameActive(true);
         UIManager.Instance.InitHUD();
-        GenManager.Instance.StartLevel();
         SetTimeScale(1.0f);
         Print.Log("Started game");
     }

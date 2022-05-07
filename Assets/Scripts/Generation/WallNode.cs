@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class WallNode : MonoBehaviour
 {
-    public Vector2Int pos;
+    private LevelRoom parentRoom;
+    [SerializeField]
+    private GlobalVars.WallType type;
 
     private void Start()
     {
-        pos = new Vector2Int(Mathf.RoundToInt(this.transform.position.x), Mathf.RoundToInt(this.transform.position.y));
-        GenManager.Instance.AddWallNode(this);
+        parentRoom = this.transform.GetComponentInParent<LevelRoom>();
+        SpawnWall();
+        DestroySelf();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    // Spawns the correct wall type at this position
+    private void SpawnWall()
     {
-        if(collision.collider.CompareTag("GenNode"))
+        GameObject tempWall = PrefabManager.Instance.GetWallObject(type);
+        if (tempWall != null)
         {
-
+            Instantiate(tempWall, this.transform.position, this.transform.rotation, this.transform.parent);
         }
+    }
+
+    // Destroys the node, allowing for additional cleanup
+    private void DestroySelf()
+    {
+        Destroy(this.gameObject);
     }
 }
