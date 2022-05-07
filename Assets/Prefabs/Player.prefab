@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerChar: {fileID: 1833483167988383942}
-  moveSpeed: 6
+  moveSpeed: 8
 --- !u!114 &1833483167988383942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,4 +148,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToRotate: {fileID: 1833483167988383941}
-  rotateSpeed: 20
+  rotateSpeed: 25
