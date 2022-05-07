@@ -13,6 +13,14 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movePos;
 
+    [SerializeField]
+    private float activeMoveSpeed;
+    private float dashSpeed;
+    private float dashLength = 0.5f, dashCooldown = 1f;
+    private float dashCounter;
+    private float dashCoolCounter;
+    
+
     [SerializeField] private GameObject playerBullet;
     [SerializeField] private Transform shootPoint;
     
@@ -28,6 +36,11 @@ public class PlayerController : MonoBehaviour
         if (canMove)
         {
             rb.MovePosition(rb.position + movePos * moveSpeed * Time.fixedDeltaTime);
+        }
+
+        if (dashCounter > 0)
+        {
+            dashCounter -= Time.deltaTime;
         }
     }
 
@@ -56,6 +69,15 @@ public class PlayerController : MonoBehaviour
     public void HandleDash()
     {
         // Handle dashing
+        if (dashCounter > 0)
+        {
+            if(dashCounter <= 0)
+            {
+                activeMoveSpeed = dashSpeed;
+                dashCounter = dashLength;
+            }
+
+        }
     }
 
     public void HandleInteract()
