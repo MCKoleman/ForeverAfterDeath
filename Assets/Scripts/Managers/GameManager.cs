@@ -38,10 +38,14 @@ public class GameManager : Singleton<GameManager>
         GenManager.Instance.Init();
         UIManager.Instance.Init();
         InputManager.Instance.Init();
-#if UNITY_EDITOR
         if(!DEBUG_DISABLE_LEVEL)
-#endif
+        {
             GenManager.Instance.StartLevel();
+        }
+        else
+        {
+            StartGame();
+        }
     }
 
     // Starts the game
