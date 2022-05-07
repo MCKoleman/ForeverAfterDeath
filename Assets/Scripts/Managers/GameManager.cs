@@ -20,6 +20,7 @@ public class GameManager : Singleton<GameManager>
     private bool DEBUG_DISABLE_LEVEL = false;
 
     private SceneLoader sceneLoader;
+    private bool isReady = false;
 
     // Initialize all other singletons
     void Start()
@@ -38,14 +39,7 @@ public class GameManager : Singleton<GameManager>
         GenManager.Instance.Init();
         UIManager.Instance.Init();
         InputManager.Instance.Init();
-        if(!DEBUG_DISABLE_LEVEL)
-        {
-            GenManager.Instance.StartLevel();
-        }
-        else
-        {
-            StartGame();
-        }
+        isReady = true;
     }
 
     // Starts the game
@@ -62,6 +56,7 @@ public class GameManager : Singleton<GameManager>
     {
         Print.Log("Ended game");
         SetIsGameActive(false);
+        UIManager.Instance.ShowDeathMenu();
     }
 
     // Restarts the game
@@ -71,6 +66,38 @@ public class GameManager : Singleton<GameManager>
         // Load start scene
         this.Init();
         StartGame();
+    }
+
+    // Communicates scene changing to necessary components, such as the level generator
+    public void HandleSceneChange(GlobalVars.SceneType sceneType)
+    {
+        switch (sceneType)
+        {
+            case GlobalVars.SceneType.MENU:
+                SetGameState(GameState.MENU);
+                break;
+            case GlobalVars.SceneType.TEST:
+                SetGameState(GameState.IN_GAME);
+                SetIsGameActive(true);
+                break;
+            case GlobalVars.SceneType.LEVEL:
+            case GlobalVars.SceneType.MINIBOSS:
+            case GlobalVars.SceneType.BOSS:
+#if UNITY_EDITOR
+                if (DEBUG_DISABLE_LEVEL)
+                {
+                    // Communicate ending of generation to GameStateManager
+                    SetGameState(GameState.IN_GAME);
+                    StartGame();
+                    //UIManager.Instance.EnableLoadingScreen(false);
+                    break;
+                }
+#endif
+                GenManager.Instance.StartLevel();
+                break;
+            default:
+                break;
+        }
     }
 
     // Swaps the level to the given level
@@ -132,8 +159,12 @@ public class GameManager : Singleton<GameManager>
                 SetTimeScale(0.0f);
                 break;
             case GameState.MENU:
+                SetTimeScale(1.0f);
+                UIManager.Instance.HideUI();
+                break;
             case GameState.IN_GAME:
                 SetTimeScale(1.0f);
+                UIManager.Instance.InitHUD();
                 break;
             // For every other situation, do nothing but unpause
             default:
@@ -161,4 +192,5 @@ public class GameManager : Singleton<GameManager>
     public void SetIsGameActive(bool state) { IsGameActive = state; }
     public void SetIsEasyMode(bool _isEasy) { isEasyMode = _isEasy; }
     public bool GetIsEasyMode() { return isEasyMode; }
+    public bool GetIsReady() { return isReady; }
 }

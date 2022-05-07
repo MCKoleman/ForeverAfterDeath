@@ -27,6 +27,14 @@ public class UIManager : Singleton<UIManager>
         ShowHUD(true);
     }
 
+    // Hides all UI elements
+    public void HideUI()
+    {
+        ShowDeathMenu(false);
+        ShowPauseMenu(false);
+        ShowHUD(false);
+    }
+
     // Displays the HUD
     public void ShowHUD(bool shouldEnable = true)
     {

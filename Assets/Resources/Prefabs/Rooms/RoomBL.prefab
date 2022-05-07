@@ -21,11 +21,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6532251402546754470, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
       propertyPath: roomReqs.Array.data[1]
-      value: 64
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6532251402546754470, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
       propertyPath: roomReqs.Array.data[2]
-      value: 8
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 6532251402546754470, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
       propertyPath: roomReqs.Array.data[3]
@@ -104,6 +104,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8378121109444512835, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8378121110328699518, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
       propertyPath: type
       value: 2
       objectReference: {fileID: 0}

@@ -17,11 +17,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6532251402546754470, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
       propertyPath: roomReqs.Array.data[0]
-      value: 32
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6532251402546754470, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
       propertyPath: roomReqs.Array.data[1]
-      value: 64
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6532251402546754470, guid: 2a43aba2f0b592b4abdebac807e98f42, type: 3}
       propertyPath: roomReqs.Array.data[2]
