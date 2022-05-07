@@ -101,7 +101,7 @@ public class EverythingToPositions : MonoBehaviour
     {
         foreach (GameObject go in buttons)
         {
-            go.transform.DORotate(new Vector3(-45, 0, -10), 0);
+            go.transform.DORotate(new Vector3(-55, 0, -5), 0);
         }
     }
     void ButtonsRotateNormal()
