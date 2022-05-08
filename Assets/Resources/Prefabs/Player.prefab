@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 333475958}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 1496602475}
   - component: {fileID: 1496602477}
   - component: {fileID: 1496602476}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4906,7 +4906,7 @@ GameObject:
   - component: {fileID: 1833483167988383942}
   - component: {fileID: 1833483167988383936}
   - component: {fileID: 4658073118402068968}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4994,6 +4994,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerChar: {fileID: 1833483167988383942}
   moveSpeed: 8
+  dashSpeed: 20
+  maxDashCooldown: 2
+  maxDashDuration: 0.5
   playerBullet: {fileID: 7903136688688271024, guid: 8a5084ce3486c244095656bf623276c4, type: 3}
   shootPoint: {fileID: 333475958}
   shootEffect: {fileID: 1496602477}

@@ -18,7 +18,6 @@ public class PlayerProjectile : MonoBehaviour
     {
         transform.position += transform.up * Time.deltaTime * projectileSpeed;
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Damage enemies
@@ -29,7 +28,7 @@ public class PlayerProjectile : MonoBehaviour
             Destroy(this.gameObject);
         }
         // Destroy on wall collision
-        else if(collision.CompareTag("Wall"))
+        else if (collision.CompareTag("Wall"))
         {
             Destroy(this.gameObject);
         }

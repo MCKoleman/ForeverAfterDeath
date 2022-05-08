@@ -6,36 +6,18 @@ public class FlyingEnemy : MonoBehaviour
 {
     [Range(0, 100)]
     [SerializeField] private float speed;
-    [SerializeField] private int damage;
-    [SerializeField] private float damageCoolDown;
-    private bool canAttack = true;
-
-    private string playerTag = "Player";
+    [SerializeField] private float maxAttackRange = 15.0f;
 
     void Update()
     {
-        if(GameManager.Instance.IsGameActive && !UIManager.Instance.IsPaused())
-            MoveForward();
+        if (InputManager.Instance.GetPlayer() != null)
+            if (GameManager.Instance.IsGameActive && !UIManager.Instance.IsPaused()
+                && Vector3.Distance(this.transform.position, InputManager.Instance.GetPlayer().transform.position) < maxAttackRange)
+                MoveForward();
     }
 
     private void MoveForward()
     {
         transform.position += transform.up * Time.deltaTime * speed;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag(playerTag) && canAttack == true)
-        {
-            StartCoroutine(DoFlyingDamage(collision.GetComponent<PlayerCharacter>()));
-        }
-    }
-
-    IEnumerator DoFlyingDamage(PlayerCharacter pc)
-    {
-        canAttack = false;
-        pc.TakeDamage(damage);
-        yield return new WaitForSeconds(damageCoolDown);
-        canAttack = true;
     }
 }
