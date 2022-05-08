@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4328772702505488230}
   - component: {fileID: 2502551974619933933}
   - component: {fileID: 5097077628487187575}
+  - component: {fileID: 6451131216935211247}
   m_Layer: 0
   m_Name: BottomSprite
   m_TagString: Wall
@@ -131,6 +132,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1}
   m_Direction: 1
+--- !u!50 &6451131216935211247
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4274808530167189716}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &5814265284297392844
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +164,7 @@ GameObject:
   - component: {fileID: 4098290084254297397}
   - component: {fileID: 8064506560844094963}
   - component: {fileID: 2907815325382667788}
+  - component: {fileID: 6355083086683577075}
   m_Layer: 0
   m_Name: TopSprite
   m_TagString: Wall
@@ -230,3 +253,24 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1}
   m_Direction: 1
+--- !u!50 &6355083086683577075
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5814265284297392844}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

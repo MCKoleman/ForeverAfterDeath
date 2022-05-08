@@ -14425,6 +14425,7 @@ GameObject:
   - component: {fileID: 7903136688688271022}
   - component: {fileID: 3737007459461247025}
   - component: {fileID: 7903136688493146348}
+  - component: {fileID: 1858157750144665465}
   m_Layer: 0
   m_Name: Player Bullet
   m_TagString: Projectile
@@ -14544,3 +14545,24 @@ MonoBehaviour:
   projectileSpeed: 15
   projectileDamage: 10
   impactExplosion: {fileID: 5979211100650925442, guid: 7e7db3ab49fc6e645b834a6c0c50637a, type: 3}
+--- !u!50 &1858157750144665465
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7903136688688271024}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4

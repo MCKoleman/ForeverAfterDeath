@@ -17,7 +17,6 @@ public class BasicProjectile : MonoBehaviour
     {
         transform.position += transform.up * Time.deltaTime * projectileSpeed;
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -25,7 +24,7 @@ public class BasicProjectile : MonoBehaviour
             collision.GetComponent<PlayerCharacter>().TakeDamage(projectileDamage);
             Destroy(this.gameObject);
         }
-        else if(collision.CompareTag("Wall"))
+        else if (collision.CompareTag("Wall"))
         {
             Destroy(this.gameObject);
         }

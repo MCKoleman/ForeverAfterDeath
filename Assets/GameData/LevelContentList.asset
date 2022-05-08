@@ -13,17 +13,25 @@ MonoBehaviour:
   m_Name: LevelContentList
   m_EditorClassIdentifier: 
   enemyList:
-    list: []
+    list:
+    - weight: 1
+      prefab: {fileID: 8097307653861949087, guid: 9d36f6433579844418f1a822a14489d0, type: 3}
+    - weight: 1
+      prefab: {fileID: 2828244936477695082, guid: e9f3694c0ad217248a8a43374069f3e1, type: 3}
   treasureList:
-    list: []
+    list:
+    - weight: 3
+      prefab: {fileID: 3989133102847341792, guid: 7c3cf9bb7719348469d136ad5658a55b, type: 3}
+    - weight: 1
+      prefab: {fileID: 1873182362431875841, guid: fe8f1e6797cf94645b1172126d9506ea, type: 3}
   hazardList:
     list: []
   wallObjList:
     list: []
-  nothingWeight: 0
-  enemyWeight: 0
-  treasureWeight: 0
-  hazardWeight: 0
+  nothingWeight: 60
+  enemyWeight: 20
+  treasureWeight: 10
+  hazardWeight: 10
   wallObjWeight: 0.3
   baseNothingWeight: 1
   baseEnemyWeight: 0.1
