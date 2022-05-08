@@ -274,7 +274,11 @@ public class GenManager : Singleton<GenManager>
     #region Score data
     public float GetDiffMod() { return Mathf.Max(1.0f, Mathf.Pow(enemyDifficultyMod, curLevel - 1)); }
 
-    public void IncLevelNum() { curLevel++; }
+    public void IncLevelNum() 
+    { 
+        curLevel++;
+        UIManager.Instance.UpdateLevelNum(curLevel);
+    }
     public void IncEnemiesKilled() { enemiesKilled++; }
     public int GetLevelNum() { return curLevel; }
     public int GetEnemiesKilled() { return enemiesKilled; }
@@ -285,6 +289,7 @@ public class GenManager : Singleton<GenManager>
         enemiesKilled = 0;
         curMaxDamage = defaultMaxDamage;
         curMaxHealth = defaultMaxHealth;
+        UIManager.Instance.UpdateLevelNum(curLevel);
     }
 
     public int GetMaxHealth()
