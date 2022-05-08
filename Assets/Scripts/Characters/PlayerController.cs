@@ -11,9 +11,13 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float moveSpeed;
+    [SerializeField]
+    private float dashForce = 50.0f;
     private bool canMove = true;
     private Rigidbody2D rb;
     private Vector2 movePos;
+    [SerializeField]
+    private Vector2 lastMoveDir;
 
     [SerializeField]
     private float dashSpeed = 20.0f;
@@ -22,7 +26,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float maxDashDuration = 0.5f;
 
+    [SerializeField]
     private float curDashCooldown;
+    [SerializeField]
     private float curDashDuration;
     private float activeMoveSpeed;
 
@@ -58,12 +64,12 @@ public class PlayerController : MonoBehaviour
         }
         
         // Handle dash unless it's over
-        if (curDashDuration > 0)
+        if (IsDashActive())
         {
             curDashDuration -= Time.fixedDeltaTime;
-            if (curDashDuration <= 0)
+            if (!IsDashActive())
             {
-                activeMoveSpeed = moveSpeed;
+                rb.velocity = Vector2.zero;
                 curDashCooldown = maxDashCooldown;
             }
         }
@@ -100,7 +106,12 @@ public class PlayerController : MonoBehaviour
     #region Movement and input
     public void HandleMove(Vector2 newPos)
     {
+        if (IsDashActive())
+            return;
+
         movePos = newPos;
+        if (movePos != Vector2.zero)
+            lastMoveDir = movePos.normalized;
     }
 
     public void HandleLook(Vector2 pos)
@@ -132,9 +143,11 @@ public class PlayerController : MonoBehaviour
     public void HandleDash()
     {
         // Handle dashing
-        if (curDashCooldown <= 0 && curDashDuration <= 0)
+        if (curDashCooldown <= 0 && !IsDashActive())
         {
-            activeMoveSpeed = dashSpeed;
+            rb.velocity = Vector2.zero;
+            rb.AddForce(lastMoveDir * dashForce, ForceMode2D.Impulse);
+            //activeMoveSpeed = dashSpeed;
             curDashDuration = maxDashDuration;
         }
     }
@@ -150,6 +163,9 @@ public class PlayerController : MonoBehaviour
         curAbility = newAbility;
     }
 #endregion
+
+    // Returns whether the dash is currently active
+    public bool IsDashActive() { return curDashDuration > 0.0f; }
 
     // Returns the character component
     public PlayerCharacter GetChar()
