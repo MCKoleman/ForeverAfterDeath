@@ -44,10 +44,16 @@ public class PlayerController : MonoBehaviour
     private float rotateSpeed = 25.0f;
 
     private Vector3 targetRotation;
+    [SerializeField]
+    private AudioClip playerLaserAudio;
+
+    private AudioSource audioSource;
 
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = playerLaserAudio;
         rb = GetComponent<Rigidbody2D>();
         GetChar();
         activeMoveSpeed = moveSpeed;
@@ -135,6 +141,7 @@ public class PlayerController : MonoBehaviour
     }
     public void HandleAttack()
     {
+        audioSource.Play();
         shootEffect.Play();
         GameObject tempObj = Instantiate(playerBullet, shootPoint.position, shootPoint.rotation, PrefabManager.Instance.projectileHolder);
         PlayerProjectile tempProjectile = tempObj.GetComponent<PlayerProjectile>();
