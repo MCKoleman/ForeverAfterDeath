@@ -1577,6 +1577,7 @@ MonoBehaviour:
   hudObj: {fileID: 1107301787844135281}
   healthBar: {fileID: 606352020}
   healthNumber: {fileID: 1656327913}
+  damageNumber: {fileID: 2096807531}
   xpBar: {fileID: 0}
   levelNum: {fileID: 0}
   livesNum: {fileID: 0}
@@ -3362,7 +3363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
-  baseRoomPrefab: {fileID: 8870147282673851998, guid: 9ba4a8fce5e74374bbba7b6337d9aa9d, type: 3}
+  baseRoomPrefab: {fileID: 481059445569501312, guid: 41ce6d0a6e5cf8d4cba691897cbe2763, type: 3}
   roomList: {fileID: 11400000, guid: f0426c18fdcfed34e988b276554d09a6, type: 2}
   contentList: {fileID: 11400000, guid: 60bcf14bc3042464f8d7a62f237d6762, type: 2}
   enemyDifficultyMod: 1.25
@@ -4241,14 +4242,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57b3692ee2b3c0148acd29a941d78e0e, type: 3}
---- !u!224 &4885942333519232333 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3610835171428248991, guid: 57b3692ee2b3c0148acd29a941d78e0e, type: 3}
-  m_PrefabInstance: {fileID: 8201646318188450002}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4885942333519232334 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3610835171428248988, guid: 57b3692ee2b3c0148acd29a941d78e0e, type: 3}
+  m_PrefabInstance: {fileID: 8201646318188450002}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &4885942333519232333 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3610835171428248991, guid: 57b3692ee2b3c0148acd29a941d78e0e, type: 3}
   m_PrefabInstance: {fileID: 8201646318188450002}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8472609890719477558

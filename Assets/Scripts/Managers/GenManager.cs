@@ -21,6 +21,12 @@ public class GenManager : Singleton<GenManager>
     private int curLevel = 0;
     [SerializeField]
     private int enemiesKilled = 0;
+    [SerializeField]
+    private int curMaxHealth;
+    [SerializeField]
+    private int curMaxDamage;
+    private int defaultMaxHealth = -1;
+    private int defaultMaxDamage = -1;
 
     [Header("Level Info")]
     [SerializeField]
@@ -40,15 +46,13 @@ public class GenManager : Singleton<GenManager>
     // Initializer for the singleton. Should only be called from GameManager
     public void Init()
     {
-        curLevel = 1;
-        enemiesKilled = 0;
+        ResetScore();
         //UIManager.Instance.SetLevelNum(curLevel);
     }
 
     public void StartLevel()
     {
         cameraController = Camera.main?.GetComponent<CameraController>();
-
         startRoom = Instantiate(baseRoomPrefab, Vector3.zero, Quaternion.identity, PrefabManager.Instance.levelGeoHolder);
         StartCoroutine(AsyncGeneration());
     }
@@ -140,7 +144,7 @@ public class GenManager : Singleton<GenManager>
 
         // Set camera to follow new room
         if (newRoom != null)
-            cameraController.SetRoom(newRoom);
+            GetCameraController().SetRoom(newRoom);
         
     }
 
@@ -259,6 +263,15 @@ public class GenManager : Singleton<GenManager>
             contentNodes[key].AddContentNode(newNode);
     }
 
+    // Gets the camera controller
+    public CameraController GetCameraController()
+    {
+        if(cameraController == null)
+            cameraController = Camera.main?.GetComponent<CameraController>();
+        return cameraController;
+    }
+
+    #region Score data
     public float GetDiffMod() { return Mathf.Max(1.0f, Mathf.Pow(enemyDifficultyMod, curLevel - 1)); }
 
     public void IncLevelNum() { curLevel++; }
@@ -270,5 +283,42 @@ public class GenManager : Singleton<GenManager>
     {
         curLevel = 1;
         enemiesKilled = 0;
+        curMaxDamage = defaultMaxDamage;
+        curMaxHealth = defaultMaxHealth;
     }
+
+    public int GetMaxHealth()
+    {
+        return curMaxHealth;
+    }
+
+    public int GetMaxDamage()
+    {
+        return curMaxDamage;
+    }
+
+    public void SetMaxHealth(int newMax)
+    {
+        curMaxHealth = newMax;
+    }
+
+    public void SetMaxDamage(int newMax)
+    {
+        curMaxDamage = newMax;
+    }
+
+    public void SetDefaults(int healthMax, int damageMax)
+    {
+        if (defaultMaxDamage < 0)
+        {
+            defaultMaxDamage = damageMax;
+            curMaxDamage = damageMax;
+        }
+        if (defaultMaxHealth < 0)
+        {
+            defaultMaxHealth = healthMax;
+            curMaxHealth = healthMax;
+        }
+    }
+    #endregion
 }

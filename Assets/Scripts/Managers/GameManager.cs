@@ -77,6 +77,10 @@ public class GameManager : Singleton<GameManager>
             case GlobalVars.SceneType.MENU:
                 SetGameState(GameState.MENU);
                 break;
+            case GlobalVars.SceneType.TUTORIAL:
+                SetGameState(GameState.IN_GAME);
+                SetIsGameActive(true);
+                break;
             case GlobalVars.SceneType.TEST:
                 SetGameState(GameState.IN_GAME);
                 SetIsGameActive(true);
