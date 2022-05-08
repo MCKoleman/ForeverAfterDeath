@@ -21,16 +21,22 @@ public class PlayerController : MonoBehaviour
     private float maxDashCooldown = 2.0f;
     [SerializeField]
     private float maxDashDuration = 0.5f;
+
     private float curDashCooldown;
     private float curDashDuration;
     private float activeMoveSpeed;
 
     
 
-    [SerializeField] private GameObject playerBullet;
-    [SerializeField] private Transform shootPoint;
-    [SerializeField] private ParticleSystem shootEffect;
-    [Range(0f, 100f), SerializeField] private float rotateSpeed = 25.0f;
+    [SerializeField]
+    private GameObject playerBullet;
+    [SerializeField]
+    private Transform shootPoint;
+    [SerializeField]
+    private ParticleSystem shootEffect;
+    [Range(0f, 100f), SerializeField]
+    private float rotateSpeed = 25.0f;
+
     private Vector3 targetRotation;
 
 
@@ -74,6 +80,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Handles picking up a powerup
+    public void PickupPowerup(GlobalVars.PowerupType type, int strength)
+    {
+        switch(type)
+        {
+            case GlobalVars.PowerupType.HEALTH:
+                GetChar()?.AddMaxHealth(strength);
+                break;
+            case GlobalVars.PowerupType.DAMAGE:
+                GetChar()?.AddMaxDamage(strength);
+                break;
+            case GlobalVars.PowerupType.DEFAULT:
+            default:
+                break;
+        }
+    }
+
+    #region Movement and input
     public void HandleMove(Vector2 newPos)
     {
         movePos = newPos;
@@ -99,7 +123,10 @@ public class PlayerController : MonoBehaviour
     public void HandleAttack()
     {
         shootEffect.Play();
-        Instantiate(playerBullet, shootPoint.position, shootPoint.rotation, PrefabManager.Instance.projectileHolder);
+        GameObject tempObj = Instantiate(playerBullet, shootPoint.position, shootPoint.rotation, PrefabManager.Instance.projectileHolder);
+        PlayerProjectile tempProjectile = tempObj.GetComponent<PlayerProjectile>();
+        if (tempProjectile != null && GetChar() != null)
+            tempProjectile.SetDamage(GetChar().GetCurDamage());
     }
 
     public void HandleDash()
@@ -122,6 +149,7 @@ public class PlayerController : MonoBehaviour
         // Handle ability change
         curAbility = newAbility;
     }
+#endregion
 
     // Returns the character component
     public PlayerCharacter GetChar()

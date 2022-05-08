@@ -5015,6 +5015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curHealth: 0
   maxHealth: 100
+  curDamage: 10
 --- !u!50 &1833483167988383936
 Rigidbody2D:
   serializedVersion: 4

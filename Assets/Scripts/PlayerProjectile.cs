@@ -14,10 +14,17 @@ public class PlayerProjectile : MonoBehaviour
         MoveForward();
     }
 
+    // Sets the damage of the projectile
+    public void SetDamage(int newDamage)
+    {
+        projectileDamage = newDamage;
+    }
+
     private void MoveForward()
     {
         transform.position += transform.up * Time.deltaTime * projectileSpeed;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Damage enemies
