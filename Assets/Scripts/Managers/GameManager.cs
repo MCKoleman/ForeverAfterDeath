@@ -56,6 +56,7 @@ public class GameManager : Singleton<GameManager>
     {
         Print.Log("Ended game");
         SetIsGameActive(false);
+        UIManager.Instance.ShowDeathMenu();
     }
 
     // Restarts the game

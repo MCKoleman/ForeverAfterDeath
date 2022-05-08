@@ -34,11 +34,19 @@ MonoBehaviour:
       prefab: {fileID: 7941499739300110857, guid: 26928b0c58b589640b6a522a47d899d4, type: 3}
     - weight: 5
       prefab: {fileID: 7941499739300110857, guid: bf20e272d0899254d8ffdd804fa3997e, type: 3}
+    - weight: 3
+      prefab: {fileID: 481059445569501312, guid: 48f0e856103bdda4ba39116e557d1019, type: 3}
+    - weight: 3
+      prefab: {fileID: 481059445569501312, guid: 81647b521da137a40aec76d044ed9404, type: 3}
+    - weight: 3
+      prefab: {fileID: 481059445569501312, guid: a46a800067c1dd64abbf339414254c96, type: 3}
+    - weight: 3
+      prefab: {fileID: 481059445569501312, guid: a9d04cdd38c7b2d4eafe9497af5a1ddc, type: 3}
     - weight: 1
       prefab: {fileID: 481059445569501312, guid: 41ce6d0a6e5cf8d4cba691897cbe2763, type: 3}
   specialRoomlist:
     list: []
-  minRoomCount: 1
-  prefRoomCount: 9
-  maxRoomCount: 10
+  minRoomCount: 5
+  prefRoomCount: 10
+  maxRoomCount: 15
   specialRoomChance: 10

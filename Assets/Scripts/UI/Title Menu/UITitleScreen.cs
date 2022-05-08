@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine.UI;
 using TMPro;
 
-public class EverythingToPositions : MonoBehaviour
+public class UITitleScreen : MonoBehaviour
 {
     [SerializeField] private GameObject titleTop;
     [SerializeField] private GameObject titleBot;
@@ -21,9 +21,12 @@ public class EverythingToPositions : MonoBehaviour
 
 
 
+    private void Start()
+    {
+        StartTitleScreen();
+    }
 
-
-    void Start()
+    public void StartTitleScreen()
     {
         TitleFadeOut();
         ButtonsRotateOff();
@@ -113,4 +116,7 @@ public class EverythingToPositions : MonoBehaviour
     }
 
     #endregion
+
+    public void LoadSceneWithId(int id) { GameManager.Instance.GetComponent<SceneLoader>().LoadSceneWithId(id); }
+    public void QuitGame() { GameManager.Instance.GetComponent<SceneLoader>().Quit(); }
 }
