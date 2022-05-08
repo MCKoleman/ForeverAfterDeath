@@ -10,7 +10,7 @@ public class GenManager : Singleton<GenManager>
     private LevelRoomList roomList;
     [SerializeField]
     private LevelContentList contentList;
-    private LevelRoom startRoom;
+    private GameObject startRoom;
 
     [Header("Runtime info")]
     private LevelRoom currentRoom;
@@ -43,8 +43,7 @@ public class GenManager : Singleton<GenManager>
     {
         cameraController = Camera.main?.GetComponent<CameraController>();
 
-        GameObject tempObj = Instantiate(baseRoomPrefab, Vector3.zero, Quaternion.identity, PrefabManager.Instance.levelGeoHolder);
-        startRoom = tempObj.GetComponent<LevelRoom>();
+        startRoom = Instantiate(baseRoomPrefab, Vector3.zero, Quaternion.identity, PrefabManager.Instance.levelGeoHolder);
         StartCoroutine(AsyncGeneration());
     }
 
@@ -66,20 +65,25 @@ public class GenManager : Singleton<GenManager>
         //UIManager.Instance.EnableLoadingScreen(false);
     }
 
-    public void GenerateLevel(LevelRoom room)
+    public void GenerateLevel(GameObject startRoom)
     {
         GameObject latestRoom = startRoom.gameObject;
         numRooms = 1;
         blCoord = new Vector2Int(int.MaxValue, int.MaxValue);
         trCoord = new Vector2Int(int.MinValue, int.MinValue);
-        roomSize = room.GetSize();
 
         // Clear previous dungeon
         roomNodes.Clear();
         contentNodes.Clear();
         spawnNodes.Clear();
 
-        AddNodesToDict(roomNodes, spawnNodes, room.roomNodes);
+        // Add all start rooms
+        var startRooms = startRoom.GetComponentsInChildren<LevelRoom>();
+        foreach (LevelRoom room in startRooms)
+        {
+            AddNodesToDict(roomNodes, spawnNodes, room.roomNodes);
+            roomSize = room.GetSize();
+        }
 
         while (spawnNodes.Count > 0)
         {
