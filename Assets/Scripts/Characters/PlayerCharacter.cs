@@ -19,6 +19,7 @@ public class PlayerCharacter : Character
         defaultMaxHealth = maxHealth;
         defaultDamage = curDamage;
         HandleSpawn();
+        UIManager.Instance.UpdateDamage(defaultDamage);
     }
 
     protected void HandleSpawn()
@@ -61,6 +62,7 @@ public class PlayerCharacter : Character
     public void AddMaxDamage(int amount)
     {
         curDamage += amount;
+        UIManager.Instance.UpdateDamage(curDamage);
     }
 
     public int GetCurDamage() { return curDamage; }
