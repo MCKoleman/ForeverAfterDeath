@@ -3369,6 +3369,8 @@ MonoBehaviour:
   enemyDifficultyMod: 1.25
   curLevel: 0
   enemiesKilled: 0
+  curMaxHealth: 0
+  curMaxDamage: 0
   roomSize: {x: 0, y: 0}
   blCoord: {x: 2147483647, y: 2147483647}
   trCoord: {x: -2147483648, y: -2147483648}
