@@ -24,21 +24,15 @@ MonoBehaviour:
       prefab: {fileID: 3989133102847341792, guid: 7c3cf9bb7719348469d136ad5658a55b, type: 3}
     - weight: 1
       prefab: {fileID: 1873182362431875841, guid: fe8f1e6797cf94645b1172126d9506ea, type: 3}
-  hazardList:
-    list: []
   wallObjList:
     list: []
-  nothingWeight: 50
-  enemyWeight: 40
+  nothingWeight: 60
+  enemyWeight: 30
   treasureWeight: 10
-  hazardWeight: 0
   wallObjWeight: 0.3
   baseNothingWeight: 1
-  baseEnemyWeight: 0.4
-  baseTreasureWeight: 0.1
-  baseHazardWeight: 0.1
+  baseEnemyWeight: 0.1
+  baseTreasureWeight: 0.2
   baseWallObjWeight: 0.1
-  nothingMod: 0
-  enemyMod: 0.1
-  treasureMod: 0
-  hazardMod: 0
+  enemyMod: 0.07
+  treasureMod: 0.1

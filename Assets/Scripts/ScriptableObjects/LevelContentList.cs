@@ -24,8 +24,6 @@ public class LevelContentList : ScriptableObject
     [SerializeField]
     private WeightedGameObjectList treasureList = new WeightedGameObjectList();
     [SerializeField]
-    private WeightedGameObjectList hazardList = new WeightedGameObjectList();
-    [SerializeField]
     private WeightedGameObjectList wallObjList = new WeightedGameObjectList();
 
     [Header("List weights")]
@@ -35,8 +33,6 @@ public class LevelContentList : ScriptableObject
     private int enemyWeight;
     [SerializeField]
     private int treasureWeight;
-    [SerializeField]
-    private int hazardWeight;
     [SerializeField]
     private float wallObjWeight = 0.3f;
 
@@ -48,19 +44,13 @@ public class LevelContentList : ScriptableObject
     [SerializeField, Range(0f, 1f)]
     private float baseTreasureWeight = 0.1f;
     [SerializeField, Range(0f, 1f)]
-    private float baseHazardWeight = 0.1f;
-    [SerializeField, Range(0f, 1f)]
     private float baseWallObjWeight = 0.1f;
 
     [Header("Room percent weights")]
     [SerializeField]
-    private float nothingMod;
-    [SerializeField]
     private float enemyMod;
     [SerializeField]
     private float treasureMod;
-    [SerializeField]
-    private float hazardMod;
 
     // Returns a random gameObject from all the lists based on the given random values
     public ContentGameObject GetRandomContent(float roomPercent, GlobalVars.NodePlace place)
@@ -97,15 +87,14 @@ public class LevelContentList : ScriptableObject
     private ContentGameObject GetRandomContent(float roomPercent)
     {
         // Find modifiers
-        float kN = Mathf.Clamp((baseNothingWeight + roomPercent * nothingMod), 0.0f, 2.0f) * nothingWeight;
-        float kE = Mathf.Clamp((baseEnemyWeight + roomPercent * enemyMod), 0.0f, 1.0f) * enemyWeight;
-        float kT = Mathf.Clamp((baseTreasureWeight + roomPercent * treasureMod), 0.0f, 1.0f) * treasureWeight;
-        float kH = Mathf.Clamp((baseHazardWeight + roomPercent * hazardMod), 0.0f, 1.0f) * hazardWeight;
+        float kN = baseNothingWeight * nothingWeight;
+        float kE = (baseEnemyWeight + GenManager.Instance.GetLevelNum() * enemyMod) * enemyWeight;
+        float kT = Mathf.Clamp(baseTreasureWeight + GenManager.Instance.GetLevelNum() * treasureMod, 0.0f, 1.0f) * treasureWeight;
 
-        float rand = Random.Range(0, kN + kE + kT + kH);
+        float rand = Random.Range(0, kN + kE + kT);
 
         // Get random enemy
-        if (rand < Mathf.Max(kE, Mathf.Clamp(GenManager.Instance.GetLevelNum() / 20.0f, 0.0f, 1.0f)))
+        if (rand < kE)
         {
             return new ContentGameObject(GlobalVars.ContentType.ENEMY, enemyList.GetRandomObject());
         }
@@ -115,13 +104,6 @@ public class LevelContentList : ScriptableObject
         if (rand < kT)
         {
             return new ContentGameObject(GlobalVars.ContentType.TREASURE, treasureList.GetRandomObject());
-        }
-        rand -= kT;
-
-        // Get random hazard
-        if (rand < kH)
-        {
-            return new ContentGameObject(GlobalVars.ContentType.HAZARD, hazardList.GetRandomObject());
         }
 
         // Spawn nothing

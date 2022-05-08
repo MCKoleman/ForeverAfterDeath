@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  maxAttackRange: 5
+  maxAttackRange: 7
 --- !u!50 &6041105708900444125
 Rigidbody2D:
   serializedVersion: 4
