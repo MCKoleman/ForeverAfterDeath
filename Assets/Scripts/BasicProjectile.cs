@@ -25,7 +25,7 @@ public class BasicProjectile : MonoBehaviour
             collision.GetComponent<PlayerCharacter>().TakeDamage(projectileDamage);
             Destroy(this.gameObject);
         }
-        else if(collision.CompareTag("Wall"))
+        else if (collision.CompareTag("Wall"))
         {
             Destroy(this.gameObject);
         }
@@ -35,7 +35,7 @@ public class BasicProjectile : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            collision.collider.GetComponent<PlayerCharacter>().TakeDamage(projectileDamage);
+            collision.collider.GetComponent<PlayerCharacter>().TakeDamage(Mathf.FloorToInt(projectileDamage * GenManager.Instance.GetDiffMod()));
             Destroy(this.gameObject);
         }
         else if (collision.collider.CompareTag("Wall"))

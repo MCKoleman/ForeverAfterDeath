@@ -16,8 +16,8 @@ TagManager:
   - Water
   - UI
   - GenerationNode
-  - 
-  - 
+  - GroundObject
+  - FlyingObject
   - 
   - 
   - 

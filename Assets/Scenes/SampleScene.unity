@@ -151,6 +151,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1791314729, guid: 36125592d2075cf419e1533867a49f00, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1791314729, guid: 36125592d2075cf419e1533867a49f00, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1107301786441789857, guid: 36125592d2075cf419e1533867a49f00, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -197,10 +205,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1107301786441789860, guid: 36125592d2075cf419e1533867a49f00, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1107301786441789862, guid: 36125592d2075cf419e1533867a49f00, type: 3}
-      propertyPath: DEBUG_DISABLE_LEVEL
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

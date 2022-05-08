@@ -10,12 +10,17 @@ public class GenManager : Singleton<GenManager>
     private LevelRoomList roomList;
     [SerializeField]
     private LevelContentList contentList;
-    private LevelRoom startRoom;
+    private GameObject startRoom;
 
     [Header("Runtime info")]
     private LevelRoom currentRoom;
+    [SerializeField]
+    private float enemyDifficultyMod = 1.25f;
     private int numRooms = 0;
+    [SerializeField]
     private int curLevel = 0;
+    [SerializeField]
+    private int enemiesKilled = 0;
 
     [Header("Level Info")]
     [SerializeField]
@@ -36,6 +41,7 @@ public class GenManager : Singleton<GenManager>
     public void Init()
     {
         curLevel = 1;
+        enemiesKilled = 0;
         //UIManager.Instance.SetLevelNum(curLevel);
     }
 
@@ -43,8 +49,7 @@ public class GenManager : Singleton<GenManager>
     {
         cameraController = Camera.main?.GetComponent<CameraController>();
 
-        GameObject tempObj = Instantiate(baseRoomPrefab, Vector3.zero, Quaternion.identity, PrefabManager.Instance.levelGeoHolder);
-        startRoom = tempObj.GetComponent<LevelRoom>();
+        startRoom = Instantiate(baseRoomPrefab, Vector3.zero, Quaternion.identity, PrefabManager.Instance.levelGeoHolder);
         StartCoroutine(AsyncGeneration());
     }
 
@@ -66,20 +71,25 @@ public class GenManager : Singleton<GenManager>
         //UIManager.Instance.EnableLoadingScreen(false);
     }
 
-    public void GenerateLevel(LevelRoom room)
+    public void GenerateLevel(GameObject startRoom)
     {
         GameObject latestRoom = startRoom.gameObject;
         numRooms = 1;
         blCoord = new Vector2Int(int.MaxValue, int.MaxValue);
         trCoord = new Vector2Int(int.MinValue, int.MinValue);
-        roomSize = room.GetSize();
 
         // Clear previous dungeon
         roomNodes.Clear();
         contentNodes.Clear();
         spawnNodes.Clear();
 
-        AddNodesToDict(roomNodes, spawnNodes, room.roomNodes);
+        // Add all start rooms
+        var startRooms = startRoom.GetComponentsInChildren<LevelRoom>();
+        foreach (LevelRoom room in startRooms)
+        {
+            AddNodesToDict(roomNodes, spawnNodes, room.roomNodes);
+            roomSize = room.GetSize();
+        }
 
         while (spawnNodes.Count > 0)
         {
@@ -247,5 +257,18 @@ public class GenManager : Singleton<GenManager>
             contentNodes.Add(key, new RoomContentNodes(newNode));
         else
             contentNodes[key].AddContentNode(newNode);
+    }
+
+    public float GetDiffMod() { return Mathf.Max(1.0f, Mathf.Pow(enemyDifficultyMod, curLevel - 1)); }
+
+    public void IncLevelNum() { curLevel++; }
+    public void IncEnemiesKilled() { enemiesKilled++; }
+    public int GetLevelNum() { return curLevel; }
+    public int GetEnemiesKilled() { return enemiesKilled; }
+
+    public void ResetScore()
+    {
+        curLevel = 1;
+        enemiesKilled = 0;
     }
 }

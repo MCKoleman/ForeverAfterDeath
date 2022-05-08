@@ -29,6 +29,22 @@ public class SceneLoader : MonoBehaviour
         LoadSceneWithId(index);
     }
 
+    public void ReturnToMainMenu()
+    {
+        // Reset time to unpause
+        GameManager.Instance.SetTimeScale(1.0f);
+        GameManager.Instance.SetIsGameActive(false);
+        PrefabManager.Instance.ResetLevel();
+        GenManager.Instance.ResetScore();
+
+        // Only play the transition if it exists
+        if (transition != null)
+            StartCoroutine(HandleLoadLevel(0));
+        // If the transition does not exist, swap immediately
+        else
+            LoadSceneWithIdAsync(0);
+    }
+
     // Loads the scene with the given ID
     public void LoadSceneWithId(int level)
     {
