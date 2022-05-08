@@ -18,6 +18,7 @@ public class EnemyCharacter : Character
     {
         base.HandleDeath();
         Instantiate(enemyDeathParticle, transform.position, Quaternion.identity, PrefabManager.Instance.projectileHolder);
+        Camera.main.GetComponent<CameraController>().Shake(0.1f, 0.2f);
 
         // Attempt to disable turret
         TurretShooting tempTurret = this.GetComponent<TurretShooting>();

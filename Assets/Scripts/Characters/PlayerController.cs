@@ -89,7 +89,9 @@ public class PlayerController : MonoBehaviour
     // Handles picking up a powerup
     public void PickupPowerup(GlobalVars.PowerupType type, int strength)
     {
-        switch(type)
+        Camera.main.GetComponent<CameraController>().Shake(0.1f, 0.2f);
+
+        switch (type)
         {
             case GlobalVars.PowerupType.HEALTH:
                 GetChar()?.AddMaxHealth(strength);
