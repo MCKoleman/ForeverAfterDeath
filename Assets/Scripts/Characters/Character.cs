@@ -20,6 +20,10 @@ public class Character : MonoBehaviour
 
     public void SetNewHealth(int _newHealth)
     {
+        // Don't update health to be more dead
+        if (curHealth <= 0 && _newHealth <= 0)
+            return;
+
         curHealth = Mathf.Clamp(_newHealth, 0, maxHealth);
         HandleHealthChange();
     }
