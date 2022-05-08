@@ -7,6 +7,7 @@ public class LevelExit : MonoBehaviour
     // Exits the level, completing it
     private void ExitLevel()
     {
+        GenManager.Instance.IncLevelNum();
         GameManager.Instance.HandleLevelSwap(1);
         Print.Log("Level completed!");
     }

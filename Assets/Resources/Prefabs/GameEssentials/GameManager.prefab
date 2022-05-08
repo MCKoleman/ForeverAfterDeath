@@ -1066,6 +1066,7 @@ MonoBehaviour:
   prevGameState: 0
   isEasyMode: 0
   DEBUG_DISABLE_LEVEL: 0
+  trialNum: 1
 --- !u!1 &1107301786469511278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2333,6 +2334,8 @@ MonoBehaviour:
   baseRoomPrefab: {fileID: 8870147282673851998, guid: 9ba4a8fce5e74374bbba7b6337d9aa9d, type: 3}
   roomList: {fileID: 11400000, guid: f0426c18fdcfed34e988b276554d09a6, type: 2}
   contentList: {fileID: 11400000, guid: 60bcf14bc3042464f8d7a62f237d6762, type: 2}
+  curLevel: 0
+  enemiesKilled: 0
   roomSize: {x: 0, y: 0}
   blCoord: {x: 2147483647, y: 2147483647}
   trCoord: {x: -2147483648, y: -2147483648}
@@ -2675,7 +2678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3610835171428248990, guid: 57b3692ee2b3c0148acd29a941d78e0e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3610835171428248990, guid: 57b3692ee2b3c0148acd29a941d78e0e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2683,7 +2686,7 @@ PrefabInstance:
       objectReference: {fileID: 1107301786441789863}
     - target: {fileID: 3610835171428248990, guid: 57b3692ee2b3c0148acd29a941d78e0e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadSceneWithId
+      value: ReturnToMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 3610835171428248990, guid: 57b3692ee2b3c0148acd29a941d78e0e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -2801,7 +2804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3610835171428248990, guid: 57b3692ee2b3c0148acd29a941d78e0e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3610835171428248990, guid: 57b3692ee2b3c0148acd29a941d78e0e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2809,7 +2812,7 @@ PrefabInstance:
       objectReference: {fileID: 1107301786441789863}
     - target: {fileID: 3610835171428248990, guid: 57b3692ee2b3c0148acd29a941d78e0e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadSceneWithId
+      value: ReturnToMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 3610835171428248990, guid: 57b3692ee2b3c0148acd29a941d78e0e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
