@@ -35,6 +35,7 @@ public class SceneLoader : MonoBehaviour
         // Reset time to unpause
         GameManager.Instance.SetTimeScale(1.0f);
         GameManager.Instance.SetIsGameActive(false);
+        PrefabManager.Instance.ResetLevel();
 
         // Only play the transition if it exists
         if (transition != null)

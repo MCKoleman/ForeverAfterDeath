@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class ContentNode : MonoBehaviour
 {
-    public Vector2Int pos;
-
     public GlobalVars.NodePlace nodePlace;
     private LevelRoom parentRoom;
 
     void Start()
     {
-        pos = new Vector2Int(Mathf.RoundToInt(this.transform.position.x), Mathf.RoundToInt(this.transform.position.y));
         GenManager.Instance.AddContentNode(this);
-
 
         parentRoom = GetComponentInParent<LevelRoom>();
 
@@ -31,6 +27,24 @@ public class ContentNode : MonoBehaviour
     private void DestroySelf()
     {
         Destroy(this.gameObject);
+    }
+
+    // Returns the position of this node
+    public Vector2Int GetRoomPos()
+    {
+        // Return parent room position if possible
+        LevelRoom parentRoom = this.GetComponentInParent<LevelRoom>();
+        if(parentRoom != null)
+            return new Vector2Int(Mathf.RoundToInt(parentRoom.transform.position.x), Mathf.RoundToInt(parentRoom.transform.position.y));
+        // Return this node's position if parent room can't be accessed
+        else
+            return new Vector2Int(Mathf.RoundToInt(this.transform.position.x), Mathf.RoundToInt(this.transform.position.y));
+    }
+
+    // Returns the position of this node
+    public Vector2Int GetPos() 
+    { 
+        return new Vector2Int(Mathf.RoundToInt(this.transform.position.x), Mathf.RoundToInt(this.transform.position.y)); 
     }
 
     public LevelRoom GetParentRoom() { return parentRoom; }

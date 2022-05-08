@@ -5,18 +5,38 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private PlayerCharacter playerChar;
+    [SerializeField]
+    private PlayerCharacter playerChar;
     private GlobalVars.SelectedAbility curAbility;
 
-    [SerializeField] private float moveSpeed;
+    [SerializeField]
+    private float moveSpeed;
     private bool canMove = true;
     private Rigidbody2D rb;
     private Vector2 movePos;
 
-    [SerializeField] private GameObject playerBullet;
-    [SerializeField] private Transform shootPoint;
-    [SerializeField] private ParticleSystem shootEffect;
-    [Range(0f, 100f), SerializeField] private float rotateSpeed = 25.0f;
+    [SerializeField]
+    private float dashSpeed = 20.0f;
+    [SerializeField]
+    private float maxDashCooldown = 2.0f;
+    [SerializeField]
+    private float maxDashDuration = 0.5f;
+
+    private float curDashCooldown;
+    private float curDashDuration;
+    private float activeMoveSpeed;
+
+    
+
+    [SerializeField]
+    private GameObject playerBullet;
+    [SerializeField]
+    private Transform shootPoint;
+    [SerializeField]
+    private ParticleSystem shootEffect;
+    [Range(0f, 100f), SerializeField]
+    private float rotateSpeed = 25.0f;
+
     private Vector3 targetRotation;
 
 
@@ -24,14 +44,34 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         GetChar();
+        activeMoveSpeed = moveSpeed;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (canMove && GameManager.Instance.IsGameActive)
+        if (!GameManager.Instance.IsGameActive)
+            return;
+
+        if (canMove)
         {
-            rb.MovePosition(rb.position + movePos * moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + movePos * activeMoveSpeed * Time.fixedDeltaTime);
         }
+        
+        // Handle dash unless it's over
+        if (curDashDuration > 0)
+        {
+            curDashDuration -= Time.fixedDeltaTime;
+            if (curDashDuration <= 0)
+            {
+                activeMoveSpeed = moveSpeed;
+                curDashCooldown = maxDashCooldown;
+            }
+        }
+        // Handle dash cooldown
+        if (curDashCooldown > 0)
+        {
+            curDashCooldown -= Time.fixedDeltaTime;
+        }   
 
         // Rotate player to face target
         if(this.transform.up != targetRotation)
@@ -40,6 +80,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Handles picking up a powerup
+    public void PickupPowerup(GlobalVars.PowerupType type, int strength)
+    {
+        switch(type)
+        {
+            case GlobalVars.PowerupType.HEALTH:
+                GetChar()?.AddMaxHealth(strength);
+                break;
+            case GlobalVars.PowerupType.DAMAGE:
+                GetChar()?.AddMaxDamage(strength);
+                break;
+            case GlobalVars.PowerupType.DEFAULT:
+            default:
+                break;
+        }
+    }
+
+    #region Movement and input
     public void HandleMove(Vector2 newPos)
     {
         movePos = newPos;
@@ -65,12 +123,20 @@ public class PlayerController : MonoBehaviour
     public void HandleAttack()
     {
         shootEffect.Play();
-        Instantiate(playerBullet, shootPoint.position, shootPoint.rotation, PrefabManager.Instance.projectileHolder);
+        GameObject tempObj = Instantiate(playerBullet, shootPoint.position, shootPoint.rotation, PrefabManager.Instance.projectileHolder);
+        PlayerProjectile tempProjectile = tempObj.GetComponent<PlayerProjectile>();
+        if (tempProjectile != null && GetChar() != null)
+            tempProjectile.SetDamage(GetChar().GetCurDamage());
     }
 
     public void HandleDash()
     {
         // Handle dashing
+        if (curDashCooldown <= 0 && curDashDuration <= 0)
+        {
+            activeMoveSpeed = dashSpeed;
+            curDashDuration = maxDashDuration;
+        }
     }
 
     public void HandleInteract()
@@ -83,6 +149,7 @@ public class PlayerController : MonoBehaviour
         // Handle ability change
         curAbility = newAbility;
     }
+#endregion
 
     // Returns the character component
     public PlayerCharacter GetChar()
