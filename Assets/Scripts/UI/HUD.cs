@@ -61,6 +61,13 @@ public class HUD : MonoBehaviour
         { damageNumber.transform.DOScale(new Vector3(1f, 1f, 1f), 0.2f); });
     }
 
+    public void UpdateLevelNum(int newValue)
+    {
+        levelNum.text = newValue.ToString();
+        levelNum.transform.DOScale(new Vector3(1.5f, 1.5f, 1f), 0.2f).OnComplete(() =>
+        { levelNum.transform.DOScale(new Vector3(1f, 1f, 1f), 0.2f); });
+    }
+
 
     public void SetMaxHealth(float newValue) { healthBar.maxValue = newValue; }
     public void UpdateXpDisplay(float percent) { xpBar.UpdateValue(percent); }

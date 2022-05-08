@@ -4,29 +4,26 @@ using UnityEngine;
 
 public class PlayerCharacter : Character
 {
-    private SpriteRenderer sprite;
-    private int defaultMaxHealth;
     [SerializeField]
     private int curDamage;
-    private int defaultDamage;
+    private SpriteRenderer sprite;
 
     protected override void Start()
     {
         base.Start();
         sprite = this.gameObject.GetComponent<SpriteRenderer>();
-        
+
         // Store default values
-        defaultMaxHealth = maxHealth;
-        defaultDamage = curDamage;
+        GenManager.Instance.SetDefaults(maxHealth, curDamage);
         HandleSpawn();
-        UIManager.Instance.UpdateDamage(defaultDamage);
+        UIManager.Instance.UpdateDamage(curDamage);
     }
 
     protected void HandleSpawn()
     {
         // Reset values to defaults
-        maxHealth = defaultMaxHealth;
-        curDamage = defaultDamage;
+        maxHealth = GenManager.Instance.GetMaxHealth();
+        curDamage = GenManager.Instance.GetMaxDamage();
         curHealth = maxHealth;
 
         // Enable player
@@ -54,6 +51,7 @@ public class PlayerCharacter : Character
     public void AddMaxHealth(int amount)
     {
         maxHealth += amount;
+        GenManager.Instance.SetMaxHealth(maxHealth);
         curHealth = maxHealth;
         HandleHealthChange();
     }
@@ -62,6 +60,7 @@ public class PlayerCharacter : Character
     public void AddMaxDamage(int amount)
     {
         curDamage += amount;
+        GenManager.Instance.SetMaxDamage(curDamage);
         UIManager.Instance.UpdateDamage(curDamage);
     }
 
