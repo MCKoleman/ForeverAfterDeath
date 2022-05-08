@@ -1550,6 +1550,7 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   curAbility: 0
   player: {fileID: 0}
+  curDevice: 0
 --- !u!114 &1107301785850509221
 MonoBehaviour:
   m_ObjectHideFlags: 0
