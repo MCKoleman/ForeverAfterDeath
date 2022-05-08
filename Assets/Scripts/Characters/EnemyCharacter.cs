@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class EnemyCharacter : Character
 {
-    [SerializeField] GameObject enemyDeathParticle;
+    [SerializeField]
+    private GameObject enemyDeathParticle;
+
+    protected override void Start()
+    {
+        base.Start();
+        maxHealth = Mathf.FloorToInt(maxHealth * GenManager.Instance.GetDiffMod());
+        curHealth = maxHealth;
+    }
+
     protected override void HandleDeath()
     {
         base.HandleDeath();
@@ -16,6 +25,7 @@ public class EnemyCharacter : Character
         if (tempTurret != null)
             tempTurret.isShootingActive = false;
 
+        GenManager.Instance.IncEnemiesKilled();
         // Destroy the enemy
         Destroy(this.gameObject);
     }

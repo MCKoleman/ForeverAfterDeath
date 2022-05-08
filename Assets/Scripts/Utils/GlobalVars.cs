@@ -36,7 +36,7 @@ public class GlobalVars : Singleton<GlobalVars>
     }
 
     [System.Serializable]
-    public enum ContentType { NOTHING, ENEMY, TREASURE, HAZARD, WALL };
+    public enum ContentType { NOTHING, ENEMY, TREASURE, HAZARD, WALL, LASER };
     [System.Serializable]
     public enum PowerupType { DEFAULT = 0, HEALTH = 1, DAMAGE = 2 };
 
@@ -48,7 +48,7 @@ public class GlobalVars : Singleton<GlobalVars>
     [System.Serializable]
     public enum Direction { MIDDLE = 0, TOP = 1, BOTTOM = 2, RIGHT = 3, LEFT = 4 }
     [SerializeField]
-    public enum SceneType { MENU = 0, LEVEL = 1, MINIBOSS = 2, BOSS = 3, TEST = 4 }
+    public enum SceneType { MENU = 0, LEVEL = 1, MINIBOSS = 2, BOSS = 3, TEST = 4, TUTORIAL = 5 }
 
     // NONE = 0_0000_0001,
     // TOP = 0_0000_0010, BOTTOM = 0_0000_0100, RIGHT = 0_0000_1000, LEFT = 0_0001_0000,

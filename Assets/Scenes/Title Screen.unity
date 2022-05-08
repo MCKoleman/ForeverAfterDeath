@@ -346,6 +346,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 573477339, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1786513693, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
+      propertyPath: m_text
+      value: "Art Lead\n-Robert Peterson\n\n Procedural Generation \n-Kristian Kolehmainen\n\nGameplay
+        Designer\n-RyLee Kriener\n\nUI Designer \n-Salomon Kolehmainen"
+      objectReference: {fileID: 0}
     - target: {fileID: 8636705845734727057, guid: 50560b0a302e9c2419323b148f1a51e8, type: 3}
       propertyPath: m_Pivot.x
       value: 0

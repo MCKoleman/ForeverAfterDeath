@@ -21,6 +21,8 @@ public class GameManager : Singleton<GameManager>
 
     private SceneLoader sceneLoader;
     private bool isReady = false;
+    [SerializeField]
+    private int trialNum = 1;
 
     // Initialize all other singletons
     void Start()
@@ -62,10 +64,9 @@ public class GameManager : Singleton<GameManager>
     // Restarts the game
     public void RestartGame()
     {
-        EndGame();
-        // Load start scene
         this.Init();
-        StartGame();
+        IncTrialNum();
+        HandleLevelSwap(1);
     }
 
     // Communicates scene changing to necessary components, such as the level generator
@@ -75,6 +76,10 @@ public class GameManager : Singleton<GameManager>
         {
             case GlobalVars.SceneType.MENU:
                 SetGameState(GameState.MENU);
+                break;
+            case GlobalVars.SceneType.TUTORIAL:
+                SetGameState(GameState.IN_GAME);
+                SetIsGameActive(true);
                 break;
             case GlobalVars.SceneType.TEST:
                 SetGameState(GameState.IN_GAME);
@@ -193,4 +198,7 @@ public class GameManager : Singleton<GameManager>
     public void SetIsEasyMode(bool _isEasy) { isEasyMode = _isEasy; }
     public bool GetIsEasyMode() { return isEasyMode; }
     public bool GetIsReady() { return isReady; }
+
+    public int GetTrialNum() { return trialNum; }
+    public void IncTrialNum() { trialNum++; }
 }
