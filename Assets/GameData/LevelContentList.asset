@@ -28,17 +28,17 @@ MonoBehaviour:
     list: []
   wallObjList:
     list: []
-  nothingWeight: 40
-  enemyWeight: 20
+  nothingWeight: 50
+  enemyWeight: 40
   treasureWeight: 10
-  hazardWeight: 10
+  hazardWeight: 0
   wallObjWeight: 0.3
   baseNothingWeight: 1
-  baseEnemyWeight: 0.1
+  baseEnemyWeight: 0.4
   baseTreasureWeight: 0.1
   baseHazardWeight: 0.1
   baseWallObjWeight: 0.1
   nothingMod: 0
-  enemyMod: 0
+  enemyMod: 0.1
   treasureMod: 0
   hazardMod: 0

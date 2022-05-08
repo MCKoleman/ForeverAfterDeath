@@ -131,8 +131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 2828244935768764765}
   bullet: {fileID: 7254147700138997041, guid: 0401d49a7c2757c4b9a1faca8a0fd3b3, type: 3}
-  shootIntervalMin: 1
-  shootIntervalMax: 2
+  shootIntervalMin: 0.5
+  shootIntervalMax: 1.5
   maxAttackDistance: 15
   isShootingActive: 1
 --- !u!114 &2828244936477695086

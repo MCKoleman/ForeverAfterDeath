@@ -105,7 +105,7 @@ public class LevelContentList : ScriptableObject
         float rand = Random.Range(0, kN + kE + kT + kH);
 
         // Get random enemy
-        if (rand < kE)
+        if (rand < Mathf.Max(kE, Mathf.Clamp(GenManager.Instance.GetLevelNum() / 20.0f, 0.0f, 1.0f)))
         {
             return new ContentGameObject(GlobalVars.ContentType.ENEMY, enemyList.GetRandomObject());
         }
