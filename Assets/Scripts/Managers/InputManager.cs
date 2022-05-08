@@ -133,7 +133,7 @@ public class InputManager : Singleton<InputManager>
 
     public void HandleLookDeltaContext(InputAction.CallbackContext context)
     {
-        if (CanTakeInput())
+        if (CanTakeInput() && curDevice != CurrentDevice.KEYBOARD_MOUSE)
             HandleLookDelta(context.ReadValue<Vector2>());
     }
 

@@ -14,6 +14,12 @@ public class PlayerProjectile : MonoBehaviour
         MoveForward();
     }
 
+    // Sets the damage of the projectile
+    public void SetDamage(int newDamage)
+    {
+        projectileDamage = newDamage;
+    }
+
     private void MoveForward()
     {
         transform.position += transform.up * Time.deltaTime * projectileSpeed;
@@ -29,7 +35,7 @@ public class PlayerProjectile : MonoBehaviour
             Destroy(this.gameObject);
         }
         // Destroy on wall collision
-        else if(collision.CompareTag("Wall"))
+        else if (collision.CompareTag("Wall"))
         {
             Destroy(this.gameObject);
         }
