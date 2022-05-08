@@ -104,7 +104,7 @@ public class GameManager : Singleton<GameManager>
     public void HandleLevelSwap(int newLevelIndex)
     {
         // TODO: Save any necessary information from previous level
-        EndGame();
+        SetIsGameActive(false);
 
         sceneLoader.LoadSceneWithId(newLevelIndex);
     }
