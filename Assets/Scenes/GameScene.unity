@@ -302,6 +302,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd2907c8d2829e949bff6515873072bd, type: 3}
+--- !u!114 &2096807531 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2096807531, guid: 36125592d2075cf419e1533867a49f00, type: 3}
+  m_PrefabInstance: {fileID: 7504756338546432927}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7504756338546432927
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -317,6 +328,7 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 83873320317753473, guid: 36125592d2075cf419e1533867a49f00, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 550
@@ -349,6 +361,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+=======
+    - target: {fileID: 1107301786300809921, guid: 36125592d2075cf419e1533867a49f00, type: 3}
+      propertyPath: damageNumber
+      value: 
+      objectReference: {fileID: 2096807531}
+>>>>>>> 725875f9e628d09c3a402347df4f1f6c64dad0a2
     - target: {fileID: 1107301786441789857, guid: 36125592d2075cf419e1533867a49f00, type: 3}
       propertyPath: m_Name
       value: GameManager
