@@ -250,7 +250,7 @@ public class GenManager : Singleton<GenManager>
     // Spawns a way to exit the dungeon
     private void SpawnExit(GameObject latestRoom)
     {
-       Instantiate(PrefabManager.Instance.exitPrefab, latestRoom.transform.position, Quaternion.identity, PrefabManager.Instance.levelGeoHolder);
+       Instantiate(PrefabManager.Instance.exitPrefab, latestRoom.transform.position, Quaternion.Euler(new Vector3(0.0f, 0.0f, 180.0f)), PrefabManager.Instance.levelGeoHolder);
     }
 
     public void AddContentNode(ContentNode newNode)
