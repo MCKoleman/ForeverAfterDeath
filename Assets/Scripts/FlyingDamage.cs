@@ -20,7 +20,7 @@ public class FlyingDamage : MonoBehaviour
     IEnumerator DoFlyingDamage(PlayerCharacter pc)
     {
         canAttack = false;
-        pc.TakeDamage(damage);
+        pc.TakeDamage(Mathf.FloorToInt(damage * GenManager.Instance.GetDiffMod()));
         yield return new WaitForSeconds(damageCoolDown);
         canAttack = true;
     }

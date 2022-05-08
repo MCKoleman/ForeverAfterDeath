@@ -14,8 +14,13 @@ public class GenManager : Singleton<GenManager>
 
     [Header("Runtime info")]
     private LevelRoom currentRoom;
+    [SerializeField]
+    private float enemyDifficultyMod = 1.25f;
     private int numRooms = 0;
+    [SerializeField]
     private int curLevel = 0;
+    [SerializeField]
+    private int enemiesKilled = 0;
 
     [Header("Level Info")]
     [SerializeField]
@@ -36,6 +41,7 @@ public class GenManager : Singleton<GenManager>
     public void Init()
     {
         curLevel = 1;
+        enemiesKilled = 0;
         //UIManager.Instance.SetLevelNum(curLevel);
     }
 
@@ -251,5 +257,18 @@ public class GenManager : Singleton<GenManager>
             contentNodes.Add(key, new RoomContentNodes(newNode));
         else
             contentNodes[key].AddContentNode(newNode);
+    }
+
+    public float GetDiffMod() { return Mathf.Max(1.0f, Mathf.Pow(enemyDifficultyMod, curLevel - 1)); }
+
+    public void IncLevelNum() { curLevel++; }
+    public void IncEnemiesKilled() { enemiesKilled++; }
+    public int GetLevelNum() { return curLevel; }
+    public int GetEnemiesKilled() { return enemiesKilled; }
+
+    public void ResetScore()
+    {
+        curLevel = 1;
+        enemiesKilled = 0;
     }
 }
