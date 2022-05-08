@@ -36,7 +36,7 @@ public class GlobalVars : Singleton<GlobalVars>
     }
 
     [System.Serializable]
-    public enum ContentType { NOTHING, ENEMY, TREASURE, HAZARD, WALL };
+    public enum ContentType { NOTHING, ENEMY, TREASURE, HAZARD, WALL, LASER };
     [System.Serializable]
     public enum PowerupType { DEFAULT = 0, HEALTH = 1, DAMAGE = 2 };
 
