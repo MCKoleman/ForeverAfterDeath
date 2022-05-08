@@ -53,6 +53,7 @@ public class GenManager : Singleton<GenManager>
     public void StartLevel()
     {
         cameraController = Camera.main?.GetComponent<CameraController>();
+        Instantiate(PrefabManager.Instance.entrancePrefab, new Vector3(0.0f, -3.2f, 0.0f), Quaternion.identity, PrefabManager.Instance.levelGeoHolder);
         startRoom = Instantiate(baseRoomPrefab, Vector3.zero, Quaternion.identity, PrefabManager.Instance.levelGeoHolder);
         StartCoroutine(AsyncGeneration());
     }

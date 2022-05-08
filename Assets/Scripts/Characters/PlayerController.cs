@@ -37,9 +37,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject playerBullet;
     [SerializeField]
-    private Transform shootPoint;
+    private Transform shootPoint1;
     [SerializeField]
-    private ParticleSystem shootEffect;
+    private ParticleSystem shootEffect1;
+    [SerializeField]
+    private Transform shootPoint2;
+    [SerializeField]
+    private ParticleSystem shootEffect2;
+    private int fireCount = 0;
     [Range(0f, 100f), SerializeField]
     private float rotateSpeed = 25.0f;
 
@@ -142,7 +147,21 @@ public class PlayerController : MonoBehaviour
     public void HandleAttack()
     {
         audioSource.Play();
-        shootEffect.Play();
+        if(fireCount % 2 == 0)
+        {
+            shootEffect1.Play();
+            ShootProjectile(shootPoint1);
+        }
+        else
+        {
+            shootEffect2.Play();
+            ShootProjectile(shootPoint2);
+        }
+        fireCount++;
+    }
+
+    private void ShootProjectile(Transform shootPoint)
+    {
         GameObject tempObj = Instantiate(playerBullet, shootPoint.position, shootPoint.rotation, PrefabManager.Instance.projectileHolder);
         PlayerProjectile tempProjectile = tempObj.GetComponent<PlayerProjectile>();
         if (tempProjectile != null && GetChar() != null)
