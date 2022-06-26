@@ -46,7 +46,7 @@ MonoBehaviour:
       prefab: {fileID: 481059445569501312, guid: 41ce6d0a6e5cf8d4cba691897cbe2763, type: 3}
   specialRoomlist:
     list: []
-  minRoomCount: 5
-  prefRoomCount: 10
-  maxRoomCount: 15
+  minRoomCount: 3
+  prefRoomCount: 6
+  maxRoomCount: 10
   specialRoomChance: 10

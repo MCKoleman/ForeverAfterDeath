@@ -6,6 +6,8 @@ public class Powerup : MonoBehaviour
 {
     public GlobalVars.PowerupType type;
     public int strength = 5;
+    [SerializeField]
+    private AudioClip clip;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -14,6 +16,7 @@ public class Powerup : MonoBehaviour
             PlayerController tempPlayer = collision.GetComponent<PlayerController>();
             if (tempPlayer != null)
             {
+                AudioManager.Instance.PlayClip(clip);
                 tempPlayer.PickupPowerup(type, strength);
                 Destroy(this.gameObject);
             }

@@ -5,17 +5,18 @@ using UnityEngine;
 public class PlayerCharacter : Character
 {
     [SerializeField]
-    private int curDamage;
+    private int curDamage; 
     [SerializeField]
     private AudioClip deathSound;
     private SpriteRenderer sprite;
-    AudioSource audioSource;
+    private AudioSource audioSource;
 
     protected override void Start()
     {
         base.Start();
-        sprite = this.gameObject.GetComponent<SpriteRenderer>();
+        sprite = this.gameObject.GetComponent<SpriteRenderer>(); 
         audioSource = GetComponent<AudioSource>();
+
         // Store default values
         GenManager.Instance.SetDefaults(maxHealth, curDamage);
         HandleSpawn();
@@ -40,13 +41,10 @@ public class PlayerCharacter : Character
     {
         base.HandleDeath();
         sprite.enabled = false;
-        audioSource.clip = deathSound;
-        audioSource.Play();
-        
-
-        
         GameManager.Instance.EndGame();
         //Destroy(this.gameObject);
+        audioSource.clip = deathSound;
+        audioSource.Play();
     }
 
     protected override void HandleHealthChange()
