@@ -762,10 +762,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8106928855536477516, guid: dd2907c8d2829e949bff6515873072bd, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8106928855536477516, guid: dd2907c8d2829e949bff6515873072bd, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -61595961985242849, guid: c05890da6d6e2484ab43219393042e65, type: 2}
     - target: {fileID: 1833483167988383941, guid: dd2907c8d2829e949bff6515873072bd, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1833483167988383942, guid: dd2907c8d2829e949bff6515873072bd, type: 3}
+      propertyPath: maxHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833483167988383942, guid: dd2907c8d2829e949bff6515873072bd, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b4c6bdd423ff29644a88ff066c7e02cb, type: 3}
     - target: {fileID: 1833483167988383943, guid: dd2907c8d2829e949bff6515873072bd, type: 3}
       propertyPath: m_RootOrder
       value: 6
