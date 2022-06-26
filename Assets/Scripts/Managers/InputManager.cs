@@ -143,6 +143,12 @@ public class InputManager : Singleton<InputManager>
             HandleAttack();
     }
 
+    public void HandleAttackButton()
+    {
+        if (CanTakeInput())
+            HandleAttack();
+    }
+
     public void HandleBlockContext(InputAction.CallbackContext context)
     {
         if (context.performed && CanTakeInput())
@@ -158,6 +164,12 @@ public class InputManager : Singleton<InputManager>
     public void HandleDashContext(InputAction.CallbackContext context)
     {
         if (context.performed && CanTakeInput())
+            HandleDash();
+    }
+
+    public void HandleDashButton()
+    {
+        if (CanTakeInput())
             HandleDash();
     }
 

@@ -250,7 +250,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8312431404399355780, guid: 3dc4c856887b8ca40a33aed794f570f3, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8312431404399355780, guid: 3dc4c856887b8ca40a33aed794f570f3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -309,13 +309,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1833483167988383937, guid: dd2907c8d2829e949bff6515873072bd, type: 3}
+      propertyPath: dashForce
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833483167988383937, guid: dd2907c8d2829e949bff6515873072bd, type: 3}
+      propertyPath: maxDashDuration
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1833483167988383941, guid: dd2907c8d2829e949bff6515873072bd, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1833483167988383943, guid: dd2907c8d2829e949bff6515873072bd, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1833483167988383943, guid: dd2907c8d2829e949bff6515873072bd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -372,7 +380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7899236788340817580, guid: f1266230b26c49b49909327d41bdf572, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7899236788340817580, guid: f1266230b26c49b49909327d41bdf572, type: 3}
       propertyPath: m_LocalPosition.x

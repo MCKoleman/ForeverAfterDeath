@@ -13,6 +13,7 @@ public class GameManager : Singleton<GameManager>
     private GameState prevGameState;
     public GameState State { get { return gameState; } }
     public bool IsGameActive { get; private set; }
+    public bool IsMobile { get; private set; }
 
     [SerializeField]
     private bool isEasyMode = false;
@@ -27,11 +28,30 @@ public class GameManager : Singleton<GameManager>
     // Initialize all other singletons
     void Start()
     {
+        // Mobile detection
+#if !UNITY_EDITOR
+        IsMobile = (SystemInfo.deviceType == DeviceType.Handheld);
+#else
+        IsMobile = false;
+#endif
         sceneLoader = this.GetComponent<SceneLoader>();
         gameState = GameState.INVALID;
         prevGameState = GameState.INVALID;
         this.Init();
     }
+
+#if UNITY_EDITOR
+    private void Update()
+    {
+        if (!IsMobile)
+        {
+            if (UnityEditor.EditorApplication.isRemoteConnected)
+                IsMobile = (Input.touchCount != 0);
+            else
+                IsMobile = (SystemInfo.deviceType == DeviceType.Handheld);
+        }
+    }
+#endif
 
     // Initializes the game manager and all singletons
     public void Init()

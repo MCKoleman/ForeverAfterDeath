@@ -20,8 +20,6 @@ public class PlayerController : MonoBehaviour
     private Vector2 lastMoveDir;
 
     [SerializeField]
-    private float dashSpeed = 20.0f;
-    [SerializeField]
     private float maxDashCooldown = 2.0f;
     [SerializeField]
     private float maxDashDuration = 0.5f;
@@ -62,17 +60,14 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         GetChar();
         activeMoveSpeed = moveSpeed;
+        lastMoveDir = Vector2.right;
+        UIManager.Instance.UpdateDashProgress(1.0f);
     }
 
     private void FixedUpdate()
     {
         if (!GameManager.Instance.IsGameActive)
             return;
-
-        if (canMove)
-        {
-            rb.MovePosition(rb.position + movePos * activeMoveSpeed * Time.fixedDeltaTime);
-        }
         
         // Handle dash unless it's over
         if (IsDashActive())
@@ -82,12 +77,18 @@ public class PlayerController : MonoBehaviour
             {
                 rb.velocity = Vector2.zero;
                 curDashCooldown = maxDashCooldown;
+                UIManager.Instance.UpdateDashProgress(0.0f);
             }
+        }
+        else if (canMove)
+        {
+            rb.MovePosition(rb.position + movePos * activeMoveSpeed * Time.fixedDeltaTime);
         }
         // Handle dash cooldown
         if (curDashCooldown > 0)
         {
-            curDashCooldown -= Time.fixedDeltaTime;
+            curDashCooldown = Mathf.Clamp(curDashCooldown - Time.fixedDeltaTime, 0.0f, maxDashCooldown);
+            UIManager.Instance.UpdateDashProgress(1.0f - GetDashCooldownPercent());
         }   
 
         // Rotate player to face target
@@ -174,9 +175,11 @@ public class PlayerController : MonoBehaviour
         if (curDashCooldown <= 0 && !IsDashActive())
         {
             rb.velocity = Vector2.zero;
+            Debug.Log($"Attempting to dash with force: [{lastMoveDir * dashForce}]");
             rb.AddForce(lastMoveDir * dashForce, ForceMode2D.Impulse);
             //activeMoveSpeed = dashSpeed;
             curDashDuration = maxDashDuration;
+            UIManager.Instance.UpdateDashProgress(1.0f - GetDashCooldownPercent());
         }
     }
 
@@ -190,6 +193,8 @@ public class PlayerController : MonoBehaviour
         // Handle ability change
         curAbility = newAbility;
     }
+
+    public float GetDashCooldownPercent() { return Mathf.Clamp(curDashCooldown / maxDashCooldown, 0.0f, 1.0f); }
 #endregion
 
     // Returns whether the dash is currently active

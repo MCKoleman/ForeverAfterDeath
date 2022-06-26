@@ -98,4 +98,5 @@ public class UIManager : Singleton<UIManager>
     public void SetLevelNum(int num) { hud.SetLevelNum(num); }
     public void UpdateXpDisplay(float percent) { hud.UpdateXpDisplay(percent); }
     public void UpdateLifeDisplay(int lives) { hud.UpdateLifeDisplay(lives); }
+    public void UpdateDashProgress(float percent) { hud.UpdateDashProgress(percent); }
 }
