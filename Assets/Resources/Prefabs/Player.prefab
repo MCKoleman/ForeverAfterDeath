@@ -4982,7 +4982,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 57d460be22b5d534b8c140ba231add3b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5030,9 +5030,8 @@ MonoBehaviour:
   moveSpeed: 8
   dashForce: 50
   lastMoveDir: {x: 0, y: 0}
-  dashSpeed: 20
   maxDashCooldown: 2
-  maxDashDuration: 0.5
+  maxDashDuration: 0.1
   curDashCooldown: 0
   curDashDuration: 0
   playerBullet: {fileID: 7903136688688271024, guid: 8a5084ce3486c244095656bf623276c4, type: 3}

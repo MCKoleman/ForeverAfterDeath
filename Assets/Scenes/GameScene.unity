@@ -248,6 +248,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5960528306098381450, guid: 3dc4c856887b8ca40a33aed794f570f3, type: 3}
+      propertyPath: m_VolumeLayerMask.m_Bits
+      value: 1015
+      objectReference: {fileID: 0}
     - target: {fileID: 8312431404399355780, guid: 3dc4c856887b8ca40a33aed794f570f3, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -296,10 +300,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCamera
       objectReference: {fileID: 0}
-    - target: {fileID: 8312431404966464481, guid: 3dc4c856887b8ca40a33aed794f570f3, type: 3}
-      propertyPath: orthographic size
-      value: 4.35
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dc4c856887b8ca40a33aed794f570f3, type: 3}
 --- !u!1001 &1888284857
@@ -309,14 +309,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1833483167988383937, guid: dd2907c8d2829e949bff6515873072bd, type: 3}
-      propertyPath: dashForce
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1833483167988383937, guid: dd2907c8d2829e949bff6515873072bd, type: 3}
-      propertyPath: maxDashDuration
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 1833483167988383941, guid: dd2907c8d2829e949bff6515873072bd, type: 3}
       propertyPath: m_Name
       value: Player

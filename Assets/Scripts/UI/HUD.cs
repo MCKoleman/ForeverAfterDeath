@@ -68,17 +68,19 @@ public class HUD : MonoBehaviour
     // Adjusts the positions of HUD elements that are subject to mobile differences
     private void AdjustMobilePos()
     {
+        // Move UI to mobile positions
         if(GameManager.Instance.IsMobile)
         {
-            healthRect.rect.Set(mobileHealthPos.x, mobileHealthPos.y, healthRect.rect.width, healthRect.rect.height);
-            dashRect.rect.Set(mobileDashPos.x, mobileDashPos.y, dashRect.rect.width, dashRect.rect.height);
-            powerRect.rect.Set(mobilePowerPos.x, mobilePowerPos.y, powerRect.rect.width, powerRect.rect.height);
+            healthRect.anchoredPosition = mobileHealthPos;
+            dashRect.anchoredPosition = mobileDashPos;
+            powerRect.anchoredPosition = mobilePowerPos;
         }
+        // Keep UI in default positions
         else
         {
-            healthRect.rect.Set(defaultHealthPos.x, defaultHealthPos.y, healthRect.rect.width, healthRect.rect.height);
-            dashRect.rect.Set(defaultDashPos.x, defaultDashPos.y, dashRect.rect.width, dashRect.rect.height);
-            powerRect.rect.Set(defaultPowerPos.x, defaultPowerPos.y, powerRect.rect.width, powerRect.rect.height);
+            healthRect.anchoredPosition = defaultHealthPos;
+            dashRect.anchoredPosition = defaultDashPos;
+            powerRect.anchoredPosition = defaultPowerPos;
         }
     }
 
