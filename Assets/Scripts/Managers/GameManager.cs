@@ -14,6 +14,8 @@ public class GameManager : Singleton<GameManager>
     public GameState State { get { return gameState; } }
     public bool IsGameActive { get; private set; }
     public bool IsMobile { get; private set; }
+    public delegate void MobileStatusChanged(bool isMobile);
+    public event MobileStatusChanged OnMobileStatusChange;
 
     [SerializeField]
     private bool isEasyMode = false;
@@ -28,27 +30,24 @@ public class GameManager : Singleton<GameManager>
     // Initialize all other singletons
     void Start()
     {
-        // Mobile detection
-#if !UNITY_EDITOR
-        IsMobile = (SystemInfo.deviceType == DeviceType.Handheld);
-#else
-        IsMobile = false;
-#endif
         sceneLoader = this.GetComponent<SceneLoader>();
         gameState = GameState.INVALID;
         prevGameState = GameState.INVALID;
         this.Init();
+
+        // Mobile detection
+        //SetIsMobile(SystemInfo.deviceType == DeviceType.Handheld);
     }
 
 #if UNITY_EDITOR
-    private void Update()
+    private void LateUpdate()
     {
-        if (!IsMobile)
+        // Mobile status can be confirmed by either receiving touch input from the remote or from the device identifying as handheld
+        if (!IsMobile 
+            && (UnityEditor.EditorApplication.isRemoteConnected && Input.touchCount != 0) 
+            || (SystemInfo.deviceType == DeviceType.Handheld))
         {
-            if (UnityEditor.EditorApplication.isRemoteConnected)
-                IsMobile = (Input.touchCount != 0);
-            else
-                IsMobile = (SystemInfo.deviceType == DeviceType.Handheld);
+            //SetIsMobile(true);
         }
     }
 #endif
@@ -58,8 +57,8 @@ public class GameManager : Singleton<GameManager>
     {
         PrefabManager.Instance.Init();
         AudioManager.Instance.Init();
-        GenManager.Instance.Init();
         UIManager.Instance.Init();
+        GenManager.Instance.Init();
         InputManager.Instance.Init();
         isReady = true;
     }
@@ -211,6 +210,14 @@ public class GameManager : Singleton<GameManager>
             default:
                 return false;
         }
+    }
+
+    // Updates the mobile position of the UI
+    public void SetIsMobile(bool _value)
+    {
+        IsMobile = _value;
+        if(IsMobile && OnMobileStatusChange != null)
+            OnMobileStatusChange(IsMobile);
     }
 
     // Getters and setters

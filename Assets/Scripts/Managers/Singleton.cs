@@ -3,7 +3,8 @@ using UnityEngine;
 public abstract class Singleton<T> : MonoBehaviour where T : Component
 {
     [SerializeField] protected bool dontDestroyOnLoad = false;
-    static T instance;
+    private static T instance;
+    public static bool Exists { get { return instance != null; } }
 
     public static T Instance
     {

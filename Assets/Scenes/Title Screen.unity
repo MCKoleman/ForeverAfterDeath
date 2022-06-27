@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 318566821}
   - component: {fileID: 318566820}
   m_Layer: 0
-  m_Name: GameJam1Art
+  m_Name: TitleIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

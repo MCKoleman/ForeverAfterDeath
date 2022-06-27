@@ -49,6 +49,21 @@ public class HUD : MonoBehaviour
     private RectTransform dashRect;
     private RectTransform powerRect;
 
+    private void OnEnable()
+    {
+        if (GameManager.Exists)
+            GameManager.Instance.OnMobileStatusChange += AdjustMobilePos;
+        else
+            StartCoroutine(WaitForGameManager());
+    }
+    private void OnDisable() { GameManager.Instance.OnMobileStatusChange -= AdjustMobilePos; }
+
+    private IEnumerator WaitForGameManager()
+    {
+        yield return new WaitUntil(() => GameManager.Exists);
+        GameManager.Instance.OnMobileStatusChange += AdjustMobilePos;
+    }
+
     private void Start()
     {
         healthRect = healthBar.GetComponent<RectTransform>();
@@ -60,16 +75,18 @@ public class HUD : MonoBehaviour
     public void EnableHUD(bool shouldEnable = true)
     {
         hudObj.SetActive(shouldEnable);
-        mobileHUD.SetActive(shouldEnable && GameManager.Instance.IsMobile);
-        AdjustMobilePos();
         isActive = shouldEnable;
+        if (shouldEnable)
+            AdjustMobilePos(GameManager.Instance.IsMobile);
     }
 
     // Adjusts the positions of HUD elements that are subject to mobile differences
-    private void AdjustMobilePos()
+    public void AdjustMobilePos(bool isMobile)
     {
+        mobileHUD.SetActive(isMobile);
+
         // Move UI to mobile positions
-        if(GameManager.Instance.IsMobile)
+        if (isMobile)
         {
             healthRect.anchoredPosition = mobileHealthPos;
             dashRect.anchoredPosition = mobileDashPos;

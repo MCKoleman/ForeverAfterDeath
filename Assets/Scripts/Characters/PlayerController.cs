@@ -30,8 +30,6 @@ public class PlayerController : MonoBehaviour
     private float curDashDuration;
     private float activeMoveSpeed;
 
-    
-
     [SerializeField]
     private GameObject playerBullet;
     [SerializeField]

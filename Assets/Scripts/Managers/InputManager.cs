@@ -11,6 +11,28 @@ public class InputManager : Singleton<InputManager>
     private PlayerController player;
     [SerializeField]
     private CurrentDevice curDevice;
+    [SerializeField]
+    private Joystick aimJoystick;
+    [SerializeField]
+    private Joystick moveJoystick;
+
+    #region Event Handling
+    private void OnEnable()
+    {
+        if (aimJoystick != null)
+            aimJoystick.onInputChange += HandleLookDeltaButton;
+        if (moveJoystick != null)
+            moveJoystick.onInputChange += HandleMoveButton;
+    }
+
+    private void OnDisable()
+    {
+        if (aimJoystick != null)
+            aimJoystick.onInputChange -= HandleLookDeltaButton;
+        if (moveJoystick != null)
+            moveJoystick.onInputChange -= HandleMoveButton;
+    }
+    #endregion
 
     private enum CurrentDevice { INVALID= 0, KEYBOARD_MOUSE = 1, GAMEPAD = 2 };
 
@@ -129,6 +151,18 @@ public class InputManager : Singleton<InputManager>
     {
         if (CanTakeInput() && curDevice == CurrentDevice.KEYBOARD_MOUSE)
             HandleLook(context.ReadValue<Vector2>());
+    }
+
+    public void HandleMoveButton(Vector2 moveDelta)
+    {
+        if (CanTakeInput())
+            HandleMove(moveDelta);
+    }
+
+    public void HandleLookDeltaButton(Vector2 lookDelta)
+    {
+        if (CanTakeInput())
+            HandleLookDelta(lookDelta);
     }
 
     public void HandleLookDeltaContext(InputAction.CallbackContext context)
