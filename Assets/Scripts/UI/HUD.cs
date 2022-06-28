@@ -84,6 +84,7 @@ public class HUD : MonoBehaviour
     public void AdjustMobilePos(bool isMobile)
     {
         mobileHUD.SetActive(isMobile);
+        return;
 
         // Move UI to mobile positions
         if (isMobile)

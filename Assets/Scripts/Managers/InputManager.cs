@@ -16,6 +16,10 @@ public class InputManager : Singleton<InputManager>
     [SerializeField]
     private Joystick moveJoystick;
 
+    [Header("Settings")]
+    [SerializeField]
+    private bool autoFire = true;
+
     #region Event Handling
     private void OnEnable()
     {
@@ -66,6 +70,12 @@ public class InputManager : Singleton<InputManager>
     {
         // Handle attacking
         GetPlayer()?.HandleAttack();
+    }
+
+    private void HandleAttackCancel()
+    {
+        // Handle canceling attacks
+        GetPlayer()?.HandleAttackCancel();
     }
 
     private void HandleBlock()
@@ -161,8 +171,18 @@ public class InputManager : Singleton<InputManager>
 
     public void HandleLookDeltaButton(Vector2 lookDelta)
     {
-        if (CanTakeInput())
-            HandleLookDelta(lookDelta);
+        if (!CanTakeInput())
+            return;
+        
+        HandleLookDelta(lookDelta);
+
+        // Handle Auto fire
+        if (!autoFire)
+            return;
+        if (lookDelta != Vector2.zero)
+            HandleAttackButton();
+        else
+            HandleAttackButtonCancel();
     }
 
     public void HandleLookDeltaContext(InputAction.CallbackContext context)
@@ -175,12 +195,19 @@ public class InputManager : Singleton<InputManager>
     {
         if (context.performed && CanTakeInput())
             HandleAttack();
+        else if (context.canceled)
+            HandleAttackCancel();
     }
 
     public void HandleAttackButton()
     {
         if (CanTakeInput())
             HandleAttack();
+    }
+
+    public void HandleAttackButtonCancel()
+    {
+        HandleAttackCancel();
     }
 
     public void HandleBlockContext(InputAction.CallbackContext context)

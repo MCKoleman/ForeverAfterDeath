@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private PlayerCharacter playerChar;
     private GlobalVars.SelectedAbility curAbility;
 
+    [Header("Move Info")]
     [SerializeField]
     private float moveSpeed;
     [SerializeField]
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private Vector2 lastMoveDir;
 
+    [Header("Dash Info")]
     [SerializeField]
     private float maxDashCooldown = 2.0f;
     [SerializeField]
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private float curDashDuration;
     private float activeMoveSpeed;
 
+    [Header("Fire Info")]
     [SerializeField]
     private GameObject playerBullet;
     [SerializeField]
@@ -43,13 +46,15 @@ public class PlayerController : MonoBehaviour
     private int fireCount = 0;
     [Range(0f, 100f), SerializeField]
     private float rotateSpeed = 25.0f;
+    [Range(60.0f, 480.0f), SerializeField]
+    private float fireRpm = 60.0f;
+    private bool isFiring = false;
 
     private Vector3 targetRotation;
     [SerializeField]
     private AudioClip playerLaserAudio;
 
     private AudioSource audioSource;
-
 
     private void Start()
     {
@@ -58,7 +63,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         GetChar();
         activeMoveSpeed = moveSpeed;
-        lastMoveDir = Vector2.right;
+        lastMoveDir = Vector2.up;
         UIManager.Instance.UpdateDashProgress(1.0f);
     }
 
@@ -143,10 +148,25 @@ public class PlayerController : MonoBehaviour
     {
         // Handle Block
     }
+
+    // Handles starting attacking
     public void HandleAttack()
     {
+        if(!isFiring)
+            StartCoroutine(HandleAutoFire());
+    }
+
+    // Handles canceling attacking
+    public void HandleAttackCancel()
+    {
+        isFiring = false;
+    }
+
+    // Handles firing a projectile
+    private void HandleFire()
+    {
         audioSource.Play();
-        if(fireCount % 2 == 0)
+        if (fireCount % 2 == 0)
         {
             shootEffect1.Play();
             ShootProjectile(shootPoint1);
@@ -157,6 +177,18 @@ public class PlayerController : MonoBehaviour
             ShootProjectile(shootPoint2);
         }
         fireCount++;
+    }
+
+    // Handles automatically firing until released
+    private IEnumerator HandleAutoFire()
+    {
+        float timeToWait = 60.0f / fireRpm;
+        isFiring = true;
+        while(isFiring)
+        {
+            HandleFire();
+            yield return new WaitForSeconds(timeToWait);
+        }
     }
 
     private void ShootProjectile(Transform shootPoint)

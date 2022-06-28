@@ -21,6 +21,8 @@ public class GameManager : Singleton<GameManager>
     private bool isEasyMode = false;
     [SerializeField]
     private bool DEBUG_DISABLE_LEVEL = false;
+    [SerializeField]
+    private bool DEBUG_SIMULATE_MOBILE = false;
 
     private SceneLoader sceneLoader;
     private bool isReady = false;
@@ -215,7 +217,11 @@ public class GameManager : Singleton<GameManager>
     // Updates the mobile position of the UI
     public void SetIsMobile(bool _value)
     {
+#if UNITY_EDITOR
+        IsMobile = _value || DEBUG_SIMULATE_MOBILE;
+#else
         IsMobile = _value;
+#endif
         if(IsMobile && OnMobileStatusChange != null)
             OnMobileStatusChange(IsMobile);
     }
