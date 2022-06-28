@@ -36,7 +36,7 @@ public class GameManager : Singleton<GameManager>
         this.Init();
 
         // Mobile detection
-        //SetIsMobile(SystemInfo.deviceType == DeviceType.Handheld);
+        SetIsMobile(SystemInfo.deviceType == DeviceType.Handheld);
     }
 
 #if UNITY_EDITOR
@@ -47,7 +47,7 @@ public class GameManager : Singleton<GameManager>
             && (UnityEditor.EditorApplication.isRemoteConnected && Input.touchCount != 0) 
             || (SystemInfo.deviceType == DeviceType.Handheld))
         {
-            //SetIsMobile(true);
+            SetIsMobile(true);
         }
     }
 #endif
