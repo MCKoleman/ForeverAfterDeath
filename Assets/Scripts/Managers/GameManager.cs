@@ -41,18 +41,18 @@ public class GameManager : Singleton<GameManager>
         SetIsMobile(SystemInfo.deviceType == DeviceType.Handheld);
     }
 
-#if UNITY_EDITOR
     private void LateUpdate()
     {
+        if (IsMobile)
+            return;
+
         // Mobile status can be confirmed by either receiving touch input from the remote or from the device identifying as handheld
-        if (!IsMobile 
-            && (UnityEditor.EditorApplication.isRemoteConnected && Input.touchCount != 0) 
+        if ((UnityEditor.EditorApplication.isRemoteConnected && Input.touchCount != 0) 
             || (SystemInfo.deviceType == DeviceType.Handheld))
         {
             SetIsMobile(true);
         }
     }
-#endif
 
     // Initializes the game manager and all singletons
     public void Init()

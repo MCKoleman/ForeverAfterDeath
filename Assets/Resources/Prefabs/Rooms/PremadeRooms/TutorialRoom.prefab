@@ -1080,7 +1080,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 3.03, y: 11.36}
+  m_AnchoredPosition: {x: 4.2, y: 10.01}
   m_SizeDelta: {x: 4, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3993589586880473118
@@ -1309,8 +1309,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Use the [Right Stick] to aim and press anywhere on the screen to shoot
-    test hazards.
+  m_text: Press anywhere on the right half of the screen to aim and shoot test hazards.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b83378cf01ee9a34bb46556902932f6b, type: 2}
   m_sharedMaterial: {fileID: 3159125850233342226, guid: b83378cf01ee9a34bb46556902932f6b, type: 2}
@@ -2856,7 +2855,8 @@ MonoBehaviour:
   m_text: 'Welcome to the testing facility!
 
 
-    Use the [Left Stick] to move'
+    Press anywhere on the left half
+    of the screen to move'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b83378cf01ee9a34bb46556902932f6b, type: 2}
   m_sharedMaterial: {fileID: 3159125850233342226, guid: b83378cf01ee9a34bb46556902932f6b, type: 2}
@@ -2961,7 +2961,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 3.91, y: 11.36}
+  m_AnchoredPosition: {x: 3.91, y: 9.97}
   m_SizeDelta: {x: 5, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1658101506665302817
